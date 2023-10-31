@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/commons::head"></head>
+<body>
+<header th:replace="fragments/commons::nav"></header>
+<main>
+    <div class="container bg-blur rounded mt-3 ">
+        <h1>Welcome to Breuninger Confiserie</h1>
+        <hr class="my-3 bg-dark w-50"/>
+        <p class="h4">
+            Since 1951</p>
+        <hr class="my-3 bg-dark w-50"/>
+        <h3>
+            Check here
+            <a class="text-primary" href="/users/login">Our Products</a>
+        </h3>
+    </div>
+
+</main>
+<footer th:replace="fragments/commons::footer"></footer>
+</body>
+</html>
