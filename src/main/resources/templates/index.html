@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/head}"></head>
+<body>
+<div>
+    <section class="nav-item">
+    <nav>
+        <p>Confi App</p>
+        <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">Register</a></li>
+            <li><a href="#">Login</a></li>
+            <li><a href="#">Logout</a></li>
+        </ul>
+    </nav>
+    </section>
+</div>
+<main>
+    <div class="container bg-blur rounded mt-5 ">
+        <h1>Welcome to Breuninger Confiserie</h1>
+        <hr class="my-3 bg-white w-50"/>
+
+        <p class="h4">
+            Since 1951</p>
+        <hr class="my-3 bg-white w-50"/>
+
+        <h3>
+            Check here our
+            <a class="text-primary" href="/users/login"> products</a>
+        </h3>
+    </div>
+</main>
+<div>
+    <footer class="footer bg-transparent  py-2">
+        <div class="container-fluid text-center">
+            <div class="footer-background h5 my-text-color fixed-bottom">
+                &copy; Lyubomir Velikov 2023
+            </div>
+        </div>
+    </footer>
+</div>
+
+</body>
+</html>
