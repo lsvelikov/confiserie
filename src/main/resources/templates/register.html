@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head}"></head>
+<body>
+
+    <form class="w-25 bg-blur rounded"
+          th:action="@{/users/register}"
+          th:method="post">
+      <section class="form">
+          <div>
+              <h1 class="text-center mt-2"><span class="badge badge-light badge-dark">Register</span></h1>
+              <hr class="hr-3 w-50 bg-white"/>
+          </div>
+          <div class="form-group">
+              <label for="exampleFirstName">First Name</label>
+              <input type="email" class="form-control" id="exampleFirstName" placeholder="Enter First Name">
+          </div>
+          <div class="form-group">
+              <label for="exampleLastName">Last Name</label>
+              <input type="email" class="form-control" id="exampleLastName" placeholder="Enter Last Name">
+          </div>
+          <div class="form-group">
+              <label for="exampleAddress">Address</label>
+              <input type="email" class="form-control" id="exampleAddress" placeholder="Enter Address">
+          </div>
+          <div class="form-group">
+              <label for="exampleEmail">Email address</label>
+              <input type="email" class="form-control" id="exampleEmail" placeholder="Enter email">
+          </div>
+          <div class="form-group">
+             <label for="examplePhoneNumber">Phone Number</label>
+             <input type="password" class="form-control" id="examplePhoneNumber" placeholder="Enter Phone Number">
+          </div>
+          <div class="form-group">
+             <label for="exampleUsername">Username</label>
+             <input type="email" class="form-control" id="exampleUsername" placeholder="Enter Username">
+          </div>
+          <div class="form-group">
+             <label for="examplePassword">Password</label>
+             <input type="password" class="form-control" id="examplePassword" placeholder="Enter Password">
+          </div>
+          <div class="form-group">
+              <label for="exampleConfirmPassword">Confirm Password</label>
+              <input type="password" class="form-control" id="exampleConfirmPassword" placeholder="Enter Confirm Password">
+          </div>
+          <div class="form-group">
+             <button type="submit" class="btn btn-primary">Register</button>
+          </div>
+      </section>
+    </form>
+</body>
+</html>

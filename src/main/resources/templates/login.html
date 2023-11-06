@@ -4,40 +4,53 @@
 <head th:replace="~{fragments/head}"></head>
 <body>
 <!--<header th:replace="fragments/commons::nav"></header>-->
-<main>
-    <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Login</span></h1>
-    <hr class="hr-3 w-25 bg-white"/>
-    <form class="mx-auto w-25 bg-blur"
+    <section class="form">
+
+    <form class="w-25 bg-blur rounded"
           th:action="@{/users/login}"
           th:method="post"
           >
-
+        <div>
+        <h1 class="text-lg-center mt-2"><span class="badge badge-light badge-dark">Login</span></h1>
+        <hr class="hr-3 w-25 bg-white"/>
         <!--    Example: Render errors messages with fields.errors - you can make it differently. -->
         <!--    <div th:each="error: ${#fields.errors()}" th:text="${error}" class="text-danger">Error messages</div>-->
+        </div>
 
         <div class="text-danger">Error messages</div>
         <div class="text-danger">Incorrect username or password!</div>
 
         <div class="form-group">
-            <div class="label-holder text-dark d-flex justify-content-center">
-                <label for="username" class="h3 mb-2">Username</label>
-            </div>
-            <input type="text" class="form-control" id="username" name="username"/>
+            <label for="exampleUsername">Username</label>
+            <input type="email" class="form-control" id="exampleUsername" placeholder="Enter Username">
         </div>
-
         <div class="form-group">
-            <div class="label-holder text-dark d-flex justify-content-center">
-                <label for="password" class="h3 mb-2">Password</label>
-            </div>
-            <input type="password" class="form-control" id="password" name="password"/>
+            <label for="examplePassword">Password</label>
+            <input type="password" class="form-control" id="examplePassword" placeholder="Enter Password">
         </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+<!--        <div class="form-group">-->
+<!--            <div class="label-holder text-dark d-flex justify-content-center">-->
+<!--                <label for="username" class="h3 mb-2">Username</label>-->
+<!--            </div>-->
+<!--            <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username"/>-->
+<!--        </div>-->
 
-        <div class="button-holder d-flex justify-content-center">
-            <button type="submit" class="btn btn-warning  mb-3">Login</button>
-        </div>
+<!--        <div class="form-group">-->
+<!--            <div class="label-holder text-dark d-flex justify-content-center">-->
+<!--                <label for="password" class="h3 mb-2">Password</label>-->
+<!--            </div>-->
+<!--            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password"/>-->
+<!--        </div>-->
+
+<!--        <div class="form-group">-->
+<!--            <button type="submit" class="btn btn-primary">Login</button>-->
+<!--        </div>-->
 
     </form>
-</main>
+    </section>
 <div>
     <footer class="footer bg-transparent  py-2">
         <div class="container-fluid text-center">

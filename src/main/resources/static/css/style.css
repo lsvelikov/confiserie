@@ -8,7 +8,7 @@ body {
 
 }
 body {
-    background-image: url(/imgages/Confiserie_3520_main.jpg);
+    background-image: url(/images/Confiserie_3520_main.jpg);
     background-position: center;
     background-attachment: fixed;
     background-size: cover;
@@ -38,8 +38,35 @@ body > main > div > hr.my-3.bg-white.w-50{
 
 /*login*/
 
+body{
+    padding-top: 15px;
+}
+body > section > form{
+    padding-left: 50px;
+    width: 400px;
+    text-align: center;
+}
+body > section > form > div:nth-child(6) > button{
+    background-color: black;
+}
 
 
+/*register*/
+
+body {
+    padding-top: 15px;
+}
+body > form > section{
+    padding-left: 50px;
+    width: 400px;
+    text-align: center;
+}
+body > form > section > div:nth-child(9){
+    padding-top: 10px;
+}
+body > form > section > div:nth-child(10) > button{
+    background-color: black;
+}
 /*.navbar .logo {*/
 /*    max-height: 50px;*/
 /*    padding-right: 100px;*/
