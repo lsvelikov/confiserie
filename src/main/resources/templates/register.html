@@ -6,48 +6,66 @@
 
     <form class="w-25 bg-blur rounded"
           th:action="@{/users/register}"
-          th:method="post">
+          th:method="post"
+    th:object="${userRegisterDto}">
       <section class="form">
           <div>
               <h1 class="text-center mt-2"><span class="badge badge-light badge-dark">Register</span></h1>
               <hr class="hr-3 w-50 bg-white"/>
           </div>
           <div class="form-group">
-              <label for="exampleFirstName">First Name</label>
-              <input type="email" class="form-control" id="exampleFirstName" placeholder="Enter First Name">
+              <label for="exampleFirstName" class="h4 mb-2">First Name</label>
+              <input th:field="*{firstName}" th:errorclass="bg-white" class="form-control" id="exampleFirstName" placeholder="Enter First Name">
+              <small th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="text-danger">First name error message</small>
           </div>
           <div class="form-group">
-              <label for="exampleLastName">Last Name</label>
-              <input type="email" class="form-control" id="exampleLastName" placeholder="Enter Last Name">
+              <label for="exampleLastName" class="h4 mb-2">Last Name</label>
+              <input th:field="*{lastName}" th:errorclass="bg-white" type="text" class="form-control" id="exampleLastName" placeholder="Enter Last Name">
+              <small th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="text-danger">Last name error message</small>
           </div>
           <div class="form-group">
-              <label for="exampleAddress">Address</label>
-              <input type="email" class="form-control" id="exampleAddress" placeholder="Enter Address">
+              <label for="exampleAddress" class="h4 mb-2">Address</label>
+              <input th:field="*{address}" th:errorclass="bg-white" type="text" class="form-control" id="exampleAddress" placeholder="Enter Address">
+              <small th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="text-danger">Address error message</small>
           </div>
           <div class="form-group">
-              <label for="exampleEmail">Email address</label>
-              <input type="email" class="form-control" id="exampleEmail" placeholder="Enter email">
+              <label for="exampleEmail" class="h4 mb-2">Email address</label>
+              <input th:field="*{email}" th:errorclass="bg-white" type="text" class="form-control" id="exampleEmail" placeholder="Enter email">
+              <small th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger">Email error message</small>
           </div>
           <div class="form-group">
-             <label for="examplePhoneNumber">Phone Number</label>
-             <input type="password" class="form-control" id="examplePhoneNumber" placeholder="Enter Phone Number">
+             <label for="examplePhoneNumber" class="h4 mb-2">Phone Number</label>
+             <input th:field="*{phoneNumber}" th:errorclass="bg-white" type="text" class="form-control" id="examplePhoneNumber" placeholder="Enter Phone Number">
+              <small th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="text-danger">Phone number error message</small>
           </div>
           <div class="form-group">
-             <label for="exampleUsername">Username</label>
-             <input type="email" class="form-control" id="exampleUsername" placeholder="Enter Username">
+             <label for="exampleUsername" class="h4 mb-2">Username</label>
+             <input th:field="*{username}" th:errorclass="bg-white" type="text" class="form-control" id="exampleUsername" placeholder="Enter Username">
+              <small th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="text-danger">Username error message</small>
           </div>
           <div class="form-group">
-             <label for="examplePassword">Password</label>
-             <input type="password" class="form-control" id="examplePassword" placeholder="Enter Password">
+             <label for="examplePassword" class="h4 mb-2">Password</label>
+             <input th:field="*{password}" th:errorclass="bg-white" type="text" class="form-control" id="examplePassword" placeholder="Enter Password">
+              <small th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger">Password error message</small>
           </div>
           <div class="form-group">
-              <label for="exampleConfirmPassword">Confirm Password</label>
-              <input type="password" class="form-control" id="exampleConfirmPassword" placeholder="Enter Confirm Password">
+              <label for="exampleConfirmPassword" class="h4 mb-2">Confirm Password</label>
+              <input th:field="*{confirmPassword}" th:errorclass="bg-white" type="text" class="form-control" id="exampleConfirmPassword" placeholder="Enter Confirm Password">
+              <small th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}" class="text-danger">Confirm password error message</small>
           </div>
-          <div class="form-group">
+          <div class="button-holder d-flex justify-content-center">
              <button type="submit" class="btn btn-primary">Register</button>
           </div>
       </section>
     </form>
+    <div>
+        <footer class="footer bg-transparent  py-2">
+            <div class="container-fluid text-center">
+                <div class="footer-background h5 my-text-color fixed-bottom">
+                    &copy; Lyubomir Velikov 2023
+                </div>
+            </div>
+        </footer>
+    </div>
 </body>
 </html>
