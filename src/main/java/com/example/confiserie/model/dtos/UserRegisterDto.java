@@ -8,15 +8,19 @@ import jakarta.validation.constraints.Size;
 public class UserRegisterDto {
 
     @NotNull
+    @NotBlank(message = "This field cannot be empty")
     private String firstName;
     @NotNull
+    @NotBlank(message = "This field cannot be empty")
     private String lastName;
     @NotNull
+    @NotBlank(message = "This field cannot be empty")
     private String address;
     @Email
     @NotBlank(message = "Email cannot be empty")
     private String email;
     @NotNull
+    @NotBlank(message = "This field cannot be empty")
     private String phoneNumber;
     @Size(min = 2, max = 20, message = "Username length must be between 2 and 20 characters")
     private String username;
