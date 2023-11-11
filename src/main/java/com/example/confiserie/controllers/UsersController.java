@@ -1,5 +1,6 @@
 package com.example.confiserie.controllers;
 
+import com.example.confiserie.model.dtos.UserLoginDto;
 import com.example.confiserie.model.dtos.UserRegisterDto;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
@@ -19,6 +20,17 @@ public class UsersController {
         return "login";
     }
 
+    @PostMapping("/login")
+    public String login(@Valid UserLoginDto userLoginDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("userLoginDto", userLoginDto)
+                    .addFlashAttribute("org.springframework.validation.BindingResult.userLoginDto", bindingResult);
+            return "redirect:login";
+        }
+        return "redirect:/home";
+    }
+
     @GetMapping("/register")
     public String register() {
         return "register";
@@ -27,7 +39,7 @@ public class UsersController {
     @PostMapping("/register")
     public String confirmRegister(@Valid UserRegisterDto userRegisterDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
-        if (bindingResult.hasErrors()) {
+        if (bindingResult.hasErrors() || !userRegisterDto.getPassword().equals(userRegisterDto.getConfirmPassword())) {
             redirectAttributes.addFlashAttribute("userRegisterDto", userRegisterDto)
                     .addFlashAttribute("org.springframework.validation.BindingResult.userRegisterDto", bindingResult);
             return "redirect:register";
@@ -38,6 +50,11 @@ public class UsersController {
     @ModelAttribute
     public UserRegisterDto userRegisterDto() {
         return new UserRegisterDto();
+    }
+
+    @ModelAttribute
+    public UserLoginDto userLoginDto() {
+        return new UserLoginDto();
     }
 }
 

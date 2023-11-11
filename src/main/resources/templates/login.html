@@ -9,6 +9,7 @@
     <form class="w-25 bg-blur rounded"
           th:action="@{/users/login}"
           th:method="post"
+          th:object="${userLoginDto}"
           >
         <div>
         <h1 class="text-lg-center mt-2"><span class="badge badge-light badge-dark">Login</span></h1>
@@ -22,11 +23,13 @@
 
         <div class="form-group">
             <label for="exampleUsername">Username</label>
-            <input type="email" class="form-control" id="exampleUsername" placeholder="Enter Username">
+            <input th:field="*{username}" th:errorclass="bg-white" type="email" class="form-control" id="exampleUsername" placeholder="Enter Username">
+            <small th:if="${#fields.hasErrors('username')}" th:errors="*{username}" class="text-danger">Username error message</small>
         </div>
         <div class="form-group">
             <label for="examplePassword">Password</label>
-            <input type="password" class="form-control" id="examplePassword" placeholder="Enter Password">
+            <input th:field="*{password}" th:errorclass="bg-white" type="password" class="form-control" id="examplePassword" placeholder="Enter Password">
+            <small th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger">Password error message</small>
         </div>
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Login</button>
