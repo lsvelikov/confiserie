@@ -1,10 +1,8 @@
 package com.example.confiserie.model.entity;
 
-import com.example.confiserie.model.enums.OrderStatusEnum;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Entity
@@ -18,8 +16,8 @@ public class Order extends BaseEntity {
     private Double price;
     @Column(name = "product_name", nullable = false)
     private String productName;
-    @Enumerated(EnumType.STRING)
-    private OrderStatusEnum status;
+    @ManyToOne
+    private OrderPaymentMethod paymentMethod;
     @Column(name = "delivered_time", nullable = false)
     @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
     private LocalDateTime deliveredTime;
@@ -56,12 +54,12 @@ public class Order extends BaseEntity {
         return this;
     }
 
-    public OrderStatusEnum getStatus() {
-        return status;
+    public OrderPaymentMethod getPaymentMethod() {
+        return paymentMethod;
     }
 
-    public Order setStatus(OrderStatusEnum status) {
-        this.status = status;
+    public Order setPaymentMethod(OrderPaymentMethod paymentMethod) {
+        this.paymentMethod = paymentMethod;
         return this;
     }
 

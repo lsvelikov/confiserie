@@ -24,4 +24,13 @@ public class Role extends BaseEntity {
         this.name = name;
         return this;
     }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public Role setUsers(List<User> users) {
+        this.users = users;
+        return this;
+    }
 }
