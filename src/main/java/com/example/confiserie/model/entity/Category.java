@@ -12,7 +12,7 @@ public class Category extends BaseEntity {
     @Column(nullable = false, unique = true)
     @Enumerated(EnumType.STRING)
     private CategoryEnum name;
-    @Column(nullable = false)
+    @Column(nullable = false, columnDefinition = "TEXT")
     private String description;
     @OneToMany
     private List<Product> products;

@@ -1,5 +1,6 @@
 package com.example.confiserie.model.dtos;
 
+import com.example.confiserie.validation.UniqueUserEmail;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -18,6 +19,7 @@ public class UserRegisterDto {
     private String address;
     @Email
     @NotBlank(message = "Email cannot be empty")
+    @UniqueUserEmail
     private String email;
     @NotNull
     @NotBlank(message = "This field cannot be empty")

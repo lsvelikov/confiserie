@@ -8,8 +8,6 @@ import java.util.List;
 @Table(name = "users")
 public class User extends BaseEntity {
 
-    @Column(nullable = false)
-    private String username;
     @Column(name = "first_name", nullable = false)
     private String firstName;
     @Column(name = "last_name", nullable = false)
@@ -25,17 +23,12 @@ public class User extends BaseEntity {
     @ManyToMany(mappedBy = "usersLikes", fetch = FetchType.EAGER)
     private List<Product> productsLikes;
 
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<Role> roles;
+
     public User() {
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public User setUsername(String username) {
-        this.username = username;
-        return this;
-    }
 
     public String getFirstName() {
         return firstName;
@@ -97,6 +90,15 @@ public class User extends BaseEntity {
 
     public User setProducts(List<Product> productsLikes) {
         this.productsLikes = productsLikes;
+        return this;
+    }
+
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public User setRoles(List<Role> roles) {
+        this.roles = roles;
         return this;
     }
 }
