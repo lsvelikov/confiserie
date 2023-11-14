@@ -1,59 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      >
 <head th:replace="~{fragments/head}"></head>
 <body>
-<!--<header th:replace="fragments/commons::nav"></header>-->
+<div th:replace="~{fragments/navbar}"></div>
+
     <section class="form">
 
-    <form class="w-25 bg-blur rounded"
+    <form th:method="post"
           th:action="@{/users/login}"
-          th:method="post"
-          >
+          class="w-25 bg-blur rounded">
+
         <div>
         <h1 class="text-lg-center mt-2"><span class="badge badge-light badge-dark">Login</span></h1>
         <hr class="hr-3 w-25 bg-white"/>
-        <!--    Example: Render errors messages with fields.errors - you can make it differently. -->
-        <!--    <div th:each="error: ${#fields.errors()}" th:text="${error}" class="text-danger">Error messages</div>-->
         </div>
-
-        <div class="text-danger">Error messages</div>
-        <div class="text-danger">Incorrect username or password!</div>
 
         <div class="form-group">
             <label for="email">Username</label>
             <input name="email" th:value="${email}" type="text" class="form-control" id="email" placeholder="Enter Email" >
-            <small class="text-danger">Email error message</small>
         </div>
         <div class="form-group">
             <label for="password">Password</label>
-            <input name="password" type="text" class="form-control" id="password" placeholder="Enter Password">
-            <small class="text-danger">Password error message</small>
+            <input name="password" type="password" class="form-control" id="password" placeholder="Enter Password">
         </div>
+        <p th:if="${badCredentials}" class="text-danger">
+            Invalid username or password.
+        </p>
         <div class="form-group">
             <button type="submit" class="btn btn-primary">Login</button>
         </div>
-<!--        <div class="form-group">-->
-<!--            <div class="label-holder text-dark d-flex justify-content-center">-->
-<!--                <label for="username" class="h3 mb-2">Username</label>-->
-<!--            </div>-->
-<!--            <input type="text" class="form-control" id="username" name="username" placeholder="Enter Username"/>-->
-<!--        </div>-->
 
-<!--        <div class="form-group">-->
-<!--            <div class="label-holder text-dark d-flex justify-content-center">-->
-<!--                <label for="password" class="h3 mb-2">Password</label>-->
-<!--            </div>-->
-<!--            <input type="password" class="form-control" id="password" name="password" placeholder="Enter Password"/>-->
-<!--        </div>-->
-
-<!--        <div class="form-group">-->
-<!--            <button type="submit" class="btn btn-primary">Login</button>-->
-<!--        </div>-->
-
-    </form>
+        </form>
     </section>
-<div>
     <footer class="footer bg-transparent  py-2">
         <div class="container-fluid text-center">
             <div class="footer-background h5 my-text-color fixed-bottom">

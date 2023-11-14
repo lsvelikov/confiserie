@@ -3,7 +3,7 @@
       xmlns:th="http://www.thymeleaf.org">
 <head th:replace="~{fragments/head}"></head>
 <body>
-
+<div th:replace="~{fragments/navbar}"></div>
     <form class="w-25 bg-blur rounded"
           th:action="@{/users/register}"
           th:method="post"
@@ -40,12 +40,12 @@
           </div>
           <div class="form-group">
              <label for="examplePassword" class="h4 mb-2">Password</label>
-             <input th:field="*{password}" th:errorclass="bg-white" type="text" class="form-control" id="examplePassword" placeholder="Enter Password">
+             <input th:field="*{password}" th:errorclass="bg-white" type="password" class="form-control" id="examplePassword" placeholder="Enter Password">
               <small th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger">Password error message</small>
           </div>
           <div class="form-group">
               <label for="exampleConfirmPassword" class="h4 mb-2">Confirm Password</label>
-              <input th:field="*{confirmPassword}" th:errorclass="bg-white" type="text" class="form-control" id="exampleConfirmPassword" placeholder="Enter Confirm Password">
+              <input th:field="*{confirmPassword}" th:errorclass="bg-white" type="password" class="form-control" id="exampleConfirmPassword" placeholder="Enter Confirm Password">
               <small th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}" class="text-danger">Confirm password error message</small>
           </div>
           <div class="button-holder d-flex justify-content-center">

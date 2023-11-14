@@ -1,8 +1,10 @@
 package com.example.confiserie.model.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToOne;
 
-import java.math.BigDecimal;
 import java.util.Set;
 
 @Entity

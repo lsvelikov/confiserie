@@ -4,7 +4,6 @@ import com.example.confiserie.model.dtos.UserRegisterDto;
 import com.example.confiserie.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -12,28 +11,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+
 @Controller
 @RequestMapping("/users")
-public class UsersController {
-
+public class UserRegistrationController {
     private final UserService userService;
 
-    public UsersController(UserService userService) {
+    public UserRegistrationController(UserService userService) {
         this.userService = userService;
-    }
-
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
-
-    @PostMapping("/users/login-error")
-    public String onFailure(@ModelAttribute("email") String email, Model model) {
-
-        model.addAttribute("email", email)
-                .addAttribute("bad_credentials", true);
-
-        return "redirect:/login";
     }
 
     @GetMapping("/register")
@@ -42,9 +27,9 @@ public class UsersController {
     }
 
     @PostMapping("/register")
-    public String confirmRegister(@Valid UserRegisterDto userRegisterDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+    public String register(@Valid UserRegisterDto userRegisterDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
 
-        if (bindingResult.hasErrors() || !userRegisterDto.getPassword().equals(userRegisterDto.getConfirmPassword())){
+        if (bindingResult.hasErrors() || !userRegisterDto.getPassword().equals(userRegisterDto.getConfirmPassword())) {
             redirectAttributes.addFlashAttribute("userRegisterDto", userRegisterDto)
                     .addFlashAttribute("org.springframework.validation.BindingResult.userRegisterDto", bindingResult);
             return "redirect:register";
@@ -52,7 +37,7 @@ public class UsersController {
 
         userService.registerUser(userRegisterDto);
 
-        return "redirect:/";
+        return "redirect:login";
     }
 
     @ModelAttribute

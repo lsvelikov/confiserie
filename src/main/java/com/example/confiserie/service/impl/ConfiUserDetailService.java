@@ -9,7 +9,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
-import java.util.List;
 import java.util.stream.Collectors;
 
 public class ConfiUserDetailService implements UserDetailsService {
@@ -37,7 +36,8 @@ public class ConfiUserDetailService implements UserDetailsService {
                 .authorities(user.getRoles()
                         .stream()
                         .map(ConfiUserDetailService::map)
-                        .collect(Collectors.toList())).build();
+                        .collect(Collectors.toList()))
+                .build();
 
     }
 
