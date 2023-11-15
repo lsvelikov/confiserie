@@ -7,7 +7,7 @@
 <div th:replace="~{fragments/navbar}"></div>
 
 <main>
-    <div class="container bg-blur rounded mt-5 ">
+    <div sec:authorize="!isAuthenticated()" class="container bg-blur rounded mt-5 ">
         <h1>Welcome to Breuninger Confiserie</h1>
         <hr class="my-3 bg-white w-50"/>
 
@@ -17,7 +17,7 @@
 
         <h3>
             Check here our
-            <a class="text-primary" href="/users/login"> products</a>
+            <a class="text-primary" href="/users/products"> products</a>
         </h3>
     </div>
 </main>
