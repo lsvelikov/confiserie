@@ -19,18 +19,28 @@
 
         <div class="form-group">
             <label for="name">Name</label>
-            <input th:field="*{name}" th:errorclass="is-invalid" name="name" type="text" class="form-control" id="name" placeholder="Enter Name" >
+            <input th:field="*{name}" th:errorclass="bg-white" name="name" type="text" class="form-control" id="name" placeholder="Enter Name" >
             <small th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger">Error name</small>
         </div>
         <div class="form-group">
             <label for="description">Description</label>
-            <input th:field="*{description}" th:errorclass="is-invalid" name="description" type="text" class="form-control" id="description" placeholder="Enter Description">
+            <input th:field="*{description}" th:errorclass="bg-white" name="description" type="text" class="form-control" id="description" placeholder="Enter Description">
             <small th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="text-danger">Error description</small>
         </div>
         <div class="form-group">
             <label for="price">Price</label>
-            <input th:field="*{price}" th:errorclass="is-invalid" name="price" type="text" class="form-control" id="price" placeholder="Enter Price">
+            <input th:field="*{price}" th:errorclass="bg-white" name="price" type="text" class="form-control" id="price" placeholder="Enter Price">
             <small th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="text-danger">Error price</small>
+        </div>
+        <div class="form-group">
+            <label for="imageUrl">Image Url</label>
+            <input th:field="*{imageUrl}" th:errorclass="bg-white" name="imageUrl" type="text" class="form-control" id="imageUrl" placeholder="Enter Url">
+            <small th:if="${#fields.hasErrors('imageUrl')}" th:errors="*{imageUrl}" class="text-danger">Error Url</small>
+        </div>
+        <div class="form-group">
+            <label for="quantity">Quantity</label>
+            <input th:field="*{quantity}" th:errorclass="bg-white" name="quantity" type="text" class="form-control" id="quantity" placeholder="Enter quantity">
+            <small th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}" class="text-danger">Error quantity</small>
         </div>
         <div class="form-group">
             <label for="category">Category</label>

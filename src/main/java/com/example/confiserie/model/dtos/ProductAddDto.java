@@ -18,6 +18,10 @@ public class ProductAddDto {
     private Double price;
     @NotNull(message = "Select category")
     private CategoryEnum category;
+    private String imageUrl;
+    @Positive(message = "Quantity should be 0 or more")
+    private int quantity;
+
 
     public ProductAddDto() {
     }
@@ -55,6 +59,24 @@ public class ProductAddDto {
 
     public ProductAddDto setCategory(CategoryEnum category) {
         this.category = category;
+        return this;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public ProductAddDto setQuantity(int quantity) {
+        this.quantity = quantity;
+        return this;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public ProductAddDto setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
         return this;
     }
 }

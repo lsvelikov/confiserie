@@ -1,6 +1,7 @@
 package com.example.confiserie.controllers;
 
 import com.example.confiserie.model.dtos.ProductAddDto;
+import com.example.confiserie.service.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -14,6 +15,11 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @RequestMapping("/products")
 public class ProductController {
 
+    private final ProductService productService;
+
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+    }
 
     @GetMapping("/add")
     public String add() {
@@ -25,9 +31,11 @@ public class ProductController {
 
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("productAddDto", productAddDto)
-                    .addFlashAttribute("org.springframework.BindingResult.productAddDto", bindingResult);
+                    .addFlashAttribute("org.springframework.validation.BindingResult.productAddDto", bindingResult);
             return "redirect:add";
         }
+
+        productService.addProduct(productAddDto);
         return "redirect:/";
     }
 

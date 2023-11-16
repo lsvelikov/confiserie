@@ -16,11 +16,10 @@ public class Product extends BaseEntity {
     private String description;
     @Column(nullable = false)
     private Double price;
-    @Column(name = "number_orders")
-    private int numberOrders;
     @Column
     private String imageUrl;
-
+    @Column
+    private Integer quantity;
     @OneToOne
     private Category category;
     @ManyToMany
@@ -56,21 +55,21 @@ public class Product extends BaseEntity {
         return this;
     }
 
-    public int getNumberOrders() {
-        return numberOrders;
-    }
-
-    public Product setNumberOrders(int numberOrders) {
-        this.numberOrders = numberOrders;
-        return this;
-    }
-
     public String getImageUrl() {
         return imageUrl;
     }
 
     public Product setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+        return this;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public Product setQuantity(Integer quantity) {
+        this.quantity = quantity;
         return this;
     }
 

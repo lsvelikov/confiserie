@@ -48,6 +48,10 @@ public class UserServiceImpl implements UserService {
             adminRole.setName(RoleNameEnum.ADMIN);
             roleRepository.save(adminRole);
 
+            Role managerRole = new Role();
+            managerRole.setName(RoleNameEnum.MANAGER);
+            roleRepository.save(managerRole);
+
             Role userRole = new Role();
             userRole.setName(RoleNameEnum.USER);
             roleRepository.save(userRole);
