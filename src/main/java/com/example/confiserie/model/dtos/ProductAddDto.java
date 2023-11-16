@@ -3,6 +3,7 @@ package com.example.confiserie.model.dtos;
 import com.example.confiserie.model.enums.CategoryEnum;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
 
 public class ProductAddDto {
@@ -19,7 +20,7 @@ public class ProductAddDto {
     @NotNull(message = "Select category")
     private CategoryEnum category;
     private String imageUrl;
-    @Positive(message = "Quantity should be 0 or more")
+    @PositiveOrZero(message = "Quantity should be 0 or more")
     private int quantity;
 
 
