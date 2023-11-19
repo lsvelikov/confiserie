@@ -4,55 +4,64 @@
 <head th:replace="~{fragments/head}"></head>
 <body>
 <div th:replace="~{fragments/navbar}"></div>
-    <form class="w-25 bg-blur rounded"
-          th:action="@{/users/register}"
-          th:method="post"
-    th:object="${userRegisterDto}">
-      <section class="form">
-          <div>
-              <h1 class="text-center mt-2"><span class="badge badge-light badge-dark">Register</span></h1>
-              <hr class="hr-3 w-50 bg-white"/>
-          </div>
-          <div class="form-group">
-              <label for="exampleFirstName" class="h4 mb-2">First Name</label>
-              <input th:field="*{firstName}" th:errorclass="bg-white" class="form-control" id="exampleFirstName" placeholder="Enter First Name">
-              <small th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="text-danger">First name error message</small>
-          </div>
-          <div class="form-group">
-              <label for="exampleLastName" class="h4 mb-2">Last Name</label>
-              <input th:field="*{lastName}" th:errorclass="bg-white" type="text" class="form-control" id="exampleLastName" placeholder="Enter Last Name">
-              <small th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="text-danger">Last name error message</small>
-          </div>
-          <div class="form-group">
-              <label for="exampleAddress" class="h4 mb-2">Address</label>
-              <input th:field="*{address}" th:errorclass="bg-white" type="text" class="form-control" id="exampleAddress" placeholder="Enter Address">
-              <small th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="text-danger">Address error message</small>
-          </div>
-          <div class="form-group">
-              <label for="exampleEmail" class="h4 mb-2">Email address</label>
-              <input th:field="*{email}" th:errorclass="bg-white" type="text" class="form-control" id="exampleEmail" placeholder="Enter email">
-              <small th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger">Email error message</small>
-          </div>
-          <div class="form-group">
-             <label for="examplePhoneNumber" class="h4 mb-2">Phone Number</label>
-             <input th:field="*{phoneNumber}" th:errorclass="bg-white" type="text" class="form-control" id="examplePhoneNumber" placeholder="Enter Phone Number">
-              <small th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="text-danger">Phone number error message</small>
-          </div>
-          <div class="form-group">
-             <label for="examplePassword" class="h4 mb-2">Password</label>
-             <input th:field="*{password}" th:errorclass="bg-white" type="password" class="form-control" id="examplePassword" placeholder="Enter Password">
-              <small th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger">Password error message</small>
-          </div>
-          <div class="form-group">
-              <label for="exampleConfirmPassword" class="h4 mb-2">Confirm Password</label>
-              <input th:field="*{confirmPassword}" th:errorclass="bg-white" type="password" class="form-control" id="exampleConfirmPassword" placeholder="Enter Confirm Password">
-              <small th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}" class="text-danger">Confirm password error message</small>
-          </div>
-          <div class="button-holder d-flex justify-content-center">
-             <button type="submit" class="btn btn-primary">Register</button>
-          </div>
-      </section>
-    </form>
+<div class="container-fluid bg-blur rounded mt-1 mb-4 d-flex justify-content-center" id="big-div">
+    <div class="col-5">
+        <section class="form">
+
+            <form th:method="post"
+                  th:action="@{/users/register}"
+                  th:object="${userRegisterDto}"
+                  class="w-25 bg-blur rounded">
+
+                <div>
+                    <h1 class="text-lg-center mt-2"><span class="badge badge-light badge-dark">Register</span></h1>
+                    <hr class="hr-3 w-50 bg-white"/>
+                </div>
+                <div class="form-group" >
+                                  <label for="exampleFirstName" class="h4 mb-2">First Name</label>
+                                  <input th:field="*{firstName}" th:errorclass="bg-white" class="form-control" id="exampleFirstName" placeholder="Enter First Name">
+                                  <small th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="text-danger">First name error message</small>
+                              </div>
+                              <div class="form-group">
+                                  <label for="exampleLastName" class="h4 mb-2">Last Name</label>
+                                  <input th:field="*{lastName}" th:errorclass="bg-white" type="text" class="form-control" id="exampleLastName" placeholder="Enter Last Name">
+                                  <small th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="text-danger">Last name error message</small>
+                              </div>
+                              <div class="form-group">
+                                  <label for="exampleAddress" class="h4 mb-2">Address</label>
+                                  <input th:field="*{address}" th:errorclass="bg-white" type="text" class="form-control" id="exampleAddress" placeholder="Enter Address">
+                                  <small th:if="${#fields.hasErrors('address')}" th:errors="*{address}" class="text-danger">Address error message</small>
+                              </div>
+                              <div class="form-group">
+                                  <label for="exampleEmail" class="h4 mb-2">Email address</label>
+                                  <input th:field="*{email}" th:errorclass="bg-white" type="text" class="form-control" id="exampleEmail" placeholder="Enter email">
+                                  <small th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger">Email error message</small>
+                              </div>
+                              <div class="form-group">
+                                 <label for="examplePhoneNumber" class="h4 mb-2">Phone Number</label>
+                                 <input th:field="*{phoneNumber}" th:errorclass="bg-white" type="text" class="form-control" id="examplePhoneNumber" placeholder="Enter Phone Number">
+                                  <small th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="text-danger">Phone number error message</small>
+                              </div>
+                              <div class="form-group">
+                                 <label for="examplePassword" class="h4 mb-2">Password</label>
+                                 <input th:field="*{password}" th:errorclass="bg-white" type="password" class="form-control" id="examplePassword" placeholder="Enter Password">
+                                  <small th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger">Password error message</small>
+                              </div>
+                              <div class="form-group">
+                                  <label for="exampleConfirmPassword" class="h4 mb-2">Confirm Password</label>
+                                  <input th:field="*{confirmPassword}" th:errorclass="bg-white" type="password" class="form-control" id="exampleConfirmPassword" placeholder="Enter Password">
+                                  <small th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}" class="text-danger">Confirm password error message</small>
+                              </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Register</button>
+                </div>
+            </form>
+        </section>
+    </div>
+    <div class="col-5">
+        <img src="/images/Confiserie_3273_main.jpg" alt="pic">
+    </div>
+</div>
 <footer th:replace="~{/fragments/footer}"></footer>
 </body>
 </html>

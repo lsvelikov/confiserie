@@ -7,13 +7,6 @@ body {
     margin-left: 0;
 
 }
-body {
-    background-image:  url(/images/Confiserie_3520_main.jpg);
-    background-position: center;
-    background-attachment: fixed;
-    background-size: cover;
-    margin-bottom: 5rem;
-}
 
 body > header > section > p{
     display: inline-block;
@@ -35,20 +28,20 @@ body > main > div > hr.my-3.bg-white.w-50{
 body > main > div > hr.my-3.bg-white.w-50{
     margin-left: 0;
 }
-
-/*login*/
-body > section{
-    padding-top: 100px;
+body > main > div > img{
+    width: 1050px;
+    margin-bottom: 0px;
 }
-body > section > form{
+/*login*/
+
+#big-div > div{
+    padding-top: 50px;
+}
+#big-div > div{
     padding-left: 50px;
-    width: 400px;
+    width: 300px;
     text-align: center;
 }
-body > section > form > div:nth-child(6) > button{
-    background-color: black;
-}
-
 
 /*register*/
 
@@ -69,4 +62,20 @@ body > form{
     padding-left: 50px;
     width: 400px;
     text-align: center;
+}
+
+/*products-all*/
+
+body > div > section.welcome{
+    text-align: center;
+    padding-top: 50px;
+}
+
+body > div > section.welcome > h1{
+    padding-bottom: 30px;
+}
+
+body > div > section.deals{
+    text-align: center;
+    padding-bottom: 25px;
 }

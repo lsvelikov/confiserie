@@ -39,6 +39,11 @@ public class ProductController {
         return "redirect:/";
     }
 
+    @GetMapping("/all")
+    public String all() {
+        return "products-all";
+    }
+
     @ModelAttribute
     public ProductAddDto productAddDto() {
         return new ProductAddDto();
