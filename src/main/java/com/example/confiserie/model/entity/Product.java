@@ -1,9 +1,6 @@
 package com.example.confiserie.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 
 import java.util.Set;
 
@@ -22,6 +19,8 @@ public class Product extends BaseEntity {
     private Integer quantity;
     @OneToOne
     private Category category;
+    @OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
+    private Set<Picture> pictures;
     @ManyToMany
     private Set<User> usersLikes;
 
@@ -79,6 +78,15 @@ public class Product extends BaseEntity {
 
     public Product setCategory(Category category) {
         this.category = category;
+        return this;
+    }
+
+    public Set<Picture> getPictures() {
+        return pictures;
+    }
+
+    public Product setPictures(Set<Picture> pictures) {
+        this.pictures = pictures;
         return this;
     }
 

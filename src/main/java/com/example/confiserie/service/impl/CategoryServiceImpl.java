@@ -36,6 +36,6 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public Category findByCategoryNameEnum(CategoryEnum categoryEnum) {
         return categoryRepository.findByName(categoryEnum)
-                .orElse(null);
+                .orElseThrow(() -> new IllegalStateException("Object does not exist"));
     }
 }

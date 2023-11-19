@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head}"></head>
+<body>
+<div th:replace="~{fragments/navbar}"></div>
+<div class="container-fluid">
+    <section class="welcome">
+        <h1>Welcome to our online confiserie</h1>
+        <p>Here you will find a lot of different sweets made with love for you</p>
+    </section>
+    <section class="deals">
+        <a href="/categories/all">Categories</a>
+        <ul>
+            <li><a href="/categories/jam">
+                <img src="/images/2021_11_18_3458.jpg" alt="pic">
+                <h2>JAMS</h2>
+            </a></li>
+            <li><a href="/categories/truffle">
+                <img src="/images/Confiserie_3043_main.jpg" alt="pic">
+                <h2>TRUFFLE</h2>
+            </a></li>
+            <li><a href="/categories/cake">
+                <img src="/images/Confiserie_3273_main.jpg" alt="pic">
+                <h2>CAKE</h2>
+            </a></li>
+            <li><a href="/categories/tart">
+                <img src="/images/Confiserie_3696_main.jpg" alt="pic">
+                <h2>TART</h2>
+            </a></li>
+            <li><a href="/categories/macarons">
+                <img src="/images/Confiserie_4057_main.jpg" alt="pic">
+                <h2>MACARONS</h2>
+            </a></li>
+        </ul>
+    </section>
+</div>
+<footer th:replace="~{/fragments/footer}"></footer>
+</body>
+</html>

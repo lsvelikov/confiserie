@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import java.io.IOException;
+
 @Controller
 @RequestMapping("/products")
 public class ProductController {
@@ -27,7 +29,7 @@ public class ProductController {
     }
 
     @PostMapping("/add")
-    public String addProduct(@Valid ProductAddDto productAddDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+    public String addProduct(@Valid ProductAddDto productAddDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) throws IOException {
 
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("productAddDto", productAddDto)
@@ -37,6 +39,11 @@ public class ProductController {
 
         productService.addProduct(productAddDto);
         return "redirect:/";
+    }
+
+    @GetMapping("/all")
+    public String all() {
+        return "products-all";
     }
 
     @ModelAttribute
