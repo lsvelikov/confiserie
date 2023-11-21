@@ -11,9 +11,9 @@ import java.util.Collections;
 
 @Service
 public class CloudinaryServiceImpl implements CloudinaryService {
-
-    private static final String TMP_FILE = "tmp";
+    private static final String TEMP_FILE = "temp-file";
     private static final String URL = "url";
+
     private final Cloudinary cloudinary;
 
     public CloudinaryServiceImpl(Cloudinary cloudinary) {
@@ -22,13 +22,14 @@ public class CloudinaryServiceImpl implements CloudinaryService {
 
     @Override
     public String uploadImage(MultipartFile multipartFile) throws IOException {
-        File temporaryFile = File.createTempFile(TMP_FILE, multipartFile.getOriginalFilename());
-        multipartFile.transferTo(temporaryFile);
+        File file = File.createTempFile(TEMP_FILE, multipartFile.getOriginalFilename());
+        multipartFile.transferTo(file);
 
-        return cloudinary
+        return this.cloudinary
                 .uploader()
-                .upload(temporaryFile, Collections.emptyMap())
+                .upload(file, Collections.emptyMap())
                 .get(URL)
                 .toString();
     }
 }
+

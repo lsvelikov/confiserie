@@ -1,9 +1,10 @@
 package com.example.confiserie.controllers;
 
-import com.example.confiserie.model.dtos.ProductAddDto;
+import com.example.confiserie.model.serviceModel.ProductServiceModel;
 import com.example.confiserie.service.ProductService;
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -29,25 +30,30 @@ public class ProductController {
     }
 
     @PostMapping("/add")
-    public String addProduct(@Valid ProductAddDto productAddDto, BindingResult bindingResult, RedirectAttributes redirectAttributes) throws IOException {
+    public String addProduct(Model model,
+                             @ModelAttribute("productServiceModel") @Valid ProductServiceModel productServiceModel,
+                             BindingResult bindingResult, RedirectAttributes redirectAttributes) throws IOException {
 
-        if (bindingResult.hasErrors()) {
-            redirectAttributes.addFlashAttribute("productAddDto", productAddDto)
-                    .addFlashAttribute("org.springframework.validation.BindingResult.productAddDto", bindingResult);
+        if (bindingResult.hasErrors()){
+            redirectAttributes.addFlashAttribute("productServiceModel", productServiceModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.productServiceModel", bindingResult);
+
             return "redirect:add";
         }
 
-        productService.addProduct(productAddDto);
+        this.productService.addProduct(productServiceModel);
         return "redirect:/";
     }
+    @ModelAttribute
+    public ProductServiceModel productServiceModel(){
+        return new ProductServiceModel();
+    }
+
+
 
     @GetMapping("/all")
     public String all() {
         return "products-all";
     }
 
-    @ModelAttribute
-    public ProductAddDto productAddDto() {
-        return new ProductAddDto();
-    }
 }
