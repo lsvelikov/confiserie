@@ -1,8 +1,5 @@
 package com.example.confiserie.model.dtos;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class ProductViewDto {
 
     private Long id;
@@ -10,7 +7,8 @@ public class ProductViewDto {
     private Double price;
     private String imageUrl;
     private Integer quantity;
-    private List<PictureViewDto> pictureViewDtoList = new ArrayList<>();
+
+    private String imgUrl;
 
     public ProductViewDto() {
     }
@@ -60,12 +58,12 @@ public class ProductViewDto {
         return this;
     }
 
-    public List<PictureViewDto> getPictureViewDtoList() {
-        return pictureViewDtoList;
+    public String getImgUrl() {
+        return imgUrl;
     }
 
-    public ProductViewDto setPictureViewDtoList(List<PictureViewDto> pictureViewDtoList) {
-        this.pictureViewDtoList = pictureViewDtoList;
+    public ProductViewDto setImgUrl(String imgUrl) {
+        this.imgUrl = imgUrl;
         return this;
     }
 }
