@@ -5,7 +5,6 @@ body {
     font-size: 22px;
     max-width: 1900px;
     margin-left: 0;
-
 }
 
 body > header > section > p{
@@ -23,11 +22,9 @@ body > header > section > ul > li{
 }
 
 body > main > div > hr.my-3.bg-white.w-50{
-    margin-left: 0;
+    margin: auto;
 }
-body > main > div > hr.my-3.bg-white.w-50{
-    margin-left: 0;
-}
+
 body > main > div > img{
     width: 1050px;
     margin-bottom: 0px;
@@ -63,7 +60,9 @@ body > form{
     width: 400px;
     text-align: center;
 }
-
+body > div {
+    margin: auto;
+}
 /*products-all*/
 
 body > div > section.welcome{
@@ -88,4 +87,19 @@ body > main > div:nth-child(3) {
 body > main > div:nth-child(4) {
     width: 400px;
     margin: auto;
+}
+
+/*about*/
+body > img {
+    padding-left: 380px;
+}
+body > h1 {
+    text-align: center;
+}
+body > main {
+    text-align: center;
+}
+body > main > div > h2 {
+    padding-top: 25px;
+    padding-bottom: 25px;
 }

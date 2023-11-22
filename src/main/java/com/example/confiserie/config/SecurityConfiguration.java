@@ -20,9 +20,9 @@ public class SecurityConfiguration {
         return httpSecurity.authorizeHttpRequests(
                 authorizeRequests -> authorizeRequests
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                        .requestMatchers("/", "/users/login", "/users/register", "/users/login-error").permitAll()
+                        .requestMatchers("/", "/about", "/users/login", "/users/register", "/users/login-error").permitAll()
                         .requestMatchers("/products/add").hasRole("ADMIN")
-                        .requestMatchers("/pictures/add").hasRole("ADMIN")
+//                        .requestMatchers("/pictures/add").hasRole("ADMIN")
                         .requestMatchers("/products/all").permitAll()
                         .anyRequest().authenticated()
 

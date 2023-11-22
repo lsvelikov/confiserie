@@ -9,7 +9,7 @@
             <p><a href="/">Confi App</a></p>
             <ul>
                 <li sec:authorize="hasRole('ADMIN')"><a href="/products/add">Add Product</a></li>
-                <li><a href="#">About Us</a></li>
+                <li><a href="/about">About Us</a></li>
                 <li><a href="#">Contact Us</a></li>
                 <li sec:authorize="isAuthenticated()"><a href="/products/all">Products</a></li>
                 <li sec:authorize="!isAuthenticated()"><a href="/users/register">Register</a></li>
