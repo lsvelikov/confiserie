@@ -90,17 +90,7 @@ body > div > section.deals{
     padding-bottom: 25px;
 }
 
-/*!*add picture*!*/
-/*body > main > div:nth-child(3) {*/
-/*    width: 400px;*/
-/*    margin: auto;*/
-/*}*/
-/*body > main > div:nth-child(4) {*/
-/*    width: 400px;*/
-/*    margin: auto;*/
-/*}*/
-
-/*about && contact*/
+/*about*/
 
 body > img {
     padding-left: 380px;
@@ -117,4 +107,22 @@ body > main {
 body > main > div > h2 {
     padding-top: 25px;
     padding-bottom: 25px;
+}
+
+/*contact*/
+
+body > h1.breuninger {
+    padding-bottom: 15px;
+    padding-top: 15px;
+}
+
+body > main > h2 {
+    padding-bottom: 15px;
+}
+
+body > main > h4 {
+    padding-bottom: 15px;
+}
+body > main > h5 {
+    padding-bottom: 15px;
 }
