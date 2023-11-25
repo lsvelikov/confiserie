@@ -1,5 +1,6 @@
 package com.example.confiserie.service.impl;
 
+import com.example.confiserie.model.dtos.ProductViewDto;
 import com.example.confiserie.model.entity.Category;
 import com.example.confiserie.model.entity.Product;
 import com.example.confiserie.model.serviceModel.ProductServiceModel;
@@ -12,6 +13,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductServiceImpl implements ProductService {
@@ -45,21 +48,12 @@ public class ProductServiceImpl implements ProductService {
         productRepository.save(product);
     }
 
-//    @Override
-//    public List<ProductViewDto> findAll() {
-//        return productRepository
-//                .findAll()
-//                .stream()
-//                .map(product -> {
-//                    ProductViewDto productViewDto = mapper.map(product, ProductViewDto.class);
-//                    List<PictureViewDto> pictures = product
-//                            .getPictures()
-//                            .stream()
-//                            .map(picture -> mapper.map(picture, PictureViewDto.class))
-//                            .collect(Collectors.toList());
-//
-//                    productViewDto.setPictureViewDtoList(pictures);
-//                    return productViewDto;
-//                }).collect(Collectors.toList());
-//    }
+    @Override
+    public List<ProductViewDto> findAll() {
+        return productRepository
+                .findAll()
+                .stream()
+                .map(product -> mapper.map(product, ProductViewDto.class))
+                .collect(Collectors.toList());
+    }
 }

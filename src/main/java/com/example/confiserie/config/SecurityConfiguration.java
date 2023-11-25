@@ -5,6 +5,7 @@ import com.example.confiserie.service.impl.ConfiUserDetailService;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -20,8 +21,10 @@ public class SecurityConfiguration {
         return httpSecurity.authorizeHttpRequests(
                 authorizeRequests -> authorizeRequests
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
-                        .requestMatchers("/", "/about", "/contact", "/users/login", "/users/register", "/users/login-error").permitAll()
+                        .requestMatchers("/", "/users/login", "/users/register", "/users/login-error").permitAll()
                         .requestMatchers("/products/add").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/assortment/**").permitAll()
+                        .requestMatchers("/about", "/contact").permitAll()
                         .requestMatchers("/products/all").permitAll()
                         .anyRequest().authenticated()
 

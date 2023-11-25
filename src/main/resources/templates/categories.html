@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head}"></head>
+<body>
+<div th:replace="~{fragments/navbar}"></div>
+<div class="container-fluid">
+
+        <div th:each="c : ${allCategories}" th:object="${c}">
+            <th:block th:if="*{name.name() == 'JAM'}">
+                  <div  class="row mx-auto d-flex flex-row justify-content-center">
+                      <div th:each="j : ${allJams}" th:object="${j}">
+                          <div class="card" style="width: 18rem;">
+                              <div class="card-body">
+                                  <img th:src="*{imageUrl}" class="card-img-top" alt="pic">
+                                  <h5 th:text="*{name}" class="card-title">Name</h5>
+                              </div>
+                              <ul class="list-group list-group-flush">
+                                  <li th:text="*{description}" class="list-group-item">Description</li>
+                                  <li th:text="*{price}" class="list-group-item">Price</li>
+                              </ul>
+                              <div class="card-body">
+                                  <a href="#" class="card-link">Card link</a>
+                                  <a href="#" class="card-link">Another link</a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+            </th:block>
+            <th:block th:if="*{name.name() == 'TRUFFLE'}">
+                <div  class="row mx-auto d-flex flex-row justify-content-center">
+                    <div th:each="t : ${allTruffles}" th:object="${t}">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <img th:src="*{imageUrl}" class="card-img-top" alt="pic">
+                                <h5 th:text="*{name}" class="card-title">Name</h5>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li th:text="*{description}" class="list-group-item">Description</li>
+                                <li th:text="*{price}" class="list-group-item">Price</li>
+                            </ul>
+                            <div class="card-body">
+                                <a href="#" class="card-link">Card link</a>
+                                <a href="#" class="card-link">Another link</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </th:block>
+            <th:block th:if="*{name.name() == 'CAKE'}">
+                <div  class="row mx-auto d-flex flex-row justify-content-center">
+                    <div th:each="cake : ${allCakes}" th:object="${cake}">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <img th:src="*{imageUrl}" class="card-img-top" alt="pic">
+                                <h5 th:text="*{name}" class="card-title">Name</h5>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li th:text="*{description}" class="list-group-item">Description</li>
+                                <li th:text="*{price}" class="list-group-item">Price</li>
+                            </ul>
+                            <div class="card-body">
+                                <a href="#" class="card-link">Card link</a>
+                                <a href="#" class="card-link">Another link</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </th:block>
+            <th:block th:if="*{name.name() == 'TART'}">
+                <div  class="row mx-auto d-flex flex-row justify-content-center">
+                    <div th:each="tart : ${allTarts}" th:object="${tart}">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <img th:src="*{imageUrl}" class="card-img-top" alt="pic">
+                                <h5 th:text="*{name}" class="card-title">Name</h5>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li th:text="*{description}" class="list-group-item">Description</li>
+                                <li th:text="*{price}" class="list-group-item">Price</li>
+                            </ul>
+                            <div class="card-body">
+                                <a href="#" class="card-link">Card link</a>
+                                <a href="#" class="card-link">Another link</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </th:block>
+            <th:block th:if="*{name.name() == 'MACARONS'}">
+                <div  class="row mx-auto d-flex flex-row justify-content-center">
+                    <div th:each="m : ${allMacarons}" th:object="${m}">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <img th:src="*{imageUrl}" class="card-img-top" alt="pic">
+                                <h5 th:text="*{name}" class="card-title">Name</h5>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li th:text="*{description}" class="list-group-item">Description</li>
+                                <li th:text="*{price}" class="list-group-item">Price</li>
+                            </ul>
+                            <div class="card-body">
+                                <a href="#" class="card-link">Card link</a>
+                                <a href="#" class="card-link">Another link</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </th:block>
+        </div>
+</div>
+<div>
+    Click here to go back to our
+    <a class="text-primary" href="/assortment"> assortment</a>
+</div>
+<footer th:replace="~{/fragments/footer}"></footer>
+</body>
+</html>
+
+

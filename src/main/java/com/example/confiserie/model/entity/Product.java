@@ -1,9 +1,6 @@
 package com.example.confiserie.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 
 import java.util.Set;
 
@@ -20,7 +17,7 @@ public class Product extends BaseEntity {
     private String imageUrl;
     @Column
     private Integer quantity;
-    @OneToOne
+    @ManyToOne
     private Category category;
     @ManyToMany
     private Set<User> usersLikes;

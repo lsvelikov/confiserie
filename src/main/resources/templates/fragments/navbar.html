@@ -11,7 +11,7 @@
                 <li sec:authorize="hasRole('ADMIN')"><a href="/products/add">Add Product</a></li>
                 <li><a href="/about">About Us</a></li>
                 <li><a href="/contact">Contact Us</a></li>
-                <li sec:authorize="isAuthenticated()"><a href="/products/all">Products</a></li>
+                <li><a href="/products/all">Products</a></li>
                 <li sec:authorize="!isAuthenticated()"><a href="/users/register">Register</a></li>
                 <li sec:authorize="!isAuthenticated()"><a href="/users/login">Login</a></li>
                 <li sec:authorize="isAuthenticated()">

@@ -74,7 +74,7 @@ body > div {
     margin: auto;
 }
 
-/*products-all*/
+/*products*/
 
 body > div > section.welcome{
     text-align: center;
@@ -88,6 +88,11 @@ body > div > section.welcome > h1{
 body > div > section.deals{
     text-align: center;
     padding-bottom: 25px;
+}
+
+body > div > h3 {
+    text-align: center;
+    padding-top: 120px;
 }
 
 /*about*/
@@ -125,4 +130,11 @@ body > main > h4 {
 }
 body > main > h5 {
     padding-bottom: 15px;
+}
+
+/*assortment*/
+
+body > div:nth-child(8) {
+    text-align: center;
+    padding-top: 100px;
 }

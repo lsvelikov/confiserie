@@ -1,5 +1,6 @@
 package com.example.confiserie.controllers;
 
+import com.example.confiserie.model.dtos.ProductViewDto;
 import com.example.confiserie.model.serviceModel.ProductServiceModel;
 import com.example.confiserie.service.ProductService;
 import jakarta.validation.Valid;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
+import java.util.List;
 
 @Controller
 @RequestMapping("/products")
@@ -42,18 +44,21 @@ public class ProductController {
         }
 
         this.productService.addProduct(productServiceModel);
-        return "redirect:/";
+        return "redirect:add";
     }
+
+    @GetMapping("/all")
+    public String all(Model model) {
+
+        List<ProductViewDto> products = productService.findAll();
+        model.addAttribute("products", products);
+
+        return "products";
+    }
+
     @ModelAttribute
     public ProductServiceModel productServiceModel(){
         return new ProductServiceModel();
-    }
-
-
-
-    @GetMapping("/all")
-    public String all() {
-        return "products-all";
     }
 
 }

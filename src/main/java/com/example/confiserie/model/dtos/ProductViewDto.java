@@ -4,11 +4,9 @@ public class ProductViewDto {
 
     private Long id;
     private String name;
+    private String description;
     private Double price;
     private String imageUrl;
-    private Integer quantity;
-
-    private String imgUrl;
 
     public ProductViewDto() {
     }
@@ -31,6 +29,15 @@ public class ProductViewDto {
         return this;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public ProductViewDto setDescription(String description) {
+        this.description = description;
+        return this;
+    }
+
     public Double getPrice() {
         return price;
     }
@@ -46,24 +53,6 @@ public class ProductViewDto {
 
     public ProductViewDto setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
-        return this;
-    }
-
-    public Integer getQuantity() {
-        return quantity;
-    }
-
-    public ProductViewDto setQuantity(Integer quantity) {
-        this.quantity = quantity;
-        return this;
-    }
-
-    public String getImgUrl() {
-        return imgUrl;
-    }
-
-    public ProductViewDto setImgUrl(String imgUrl) {
-        this.imgUrl = imgUrl;
         return this;
     }
 }
