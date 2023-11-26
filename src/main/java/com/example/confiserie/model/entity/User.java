@@ -20,8 +20,6 @@ public class User extends BaseEntity {
     private String phoneNumber;
     @Column(nullable = false)
     private String address;
-    @ManyToMany(mappedBy = "usersLikes", fetch = FetchType.EAGER)
-    private List<Product> productsLikes;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "users_roles",
@@ -87,14 +85,6 @@ public class User extends BaseEntity {
         return this;
     }
 
-    public List<Product> getProducts() {
-        return productsLikes;
-    }
-
-    public User setProducts(List<Product> productsLikes) {
-        this.productsLikes = productsLikes;
-        return this;
-    }
 
     public List<Role> getRoles() {
         return roles;

@@ -10,6 +10,7 @@ import com.example.confiserie.service.CloudinaryService;
 import com.example.confiserie.service.ProductService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -55,5 +56,11 @@ public class ProductServiceImpl implements ProductService {
                 .stream()
                 .map(product -> mapper.map(product, ProductViewDto.class))
                 .collect(Collectors.toList());
+    }
+
+    @Override
+    @Transactional
+    public void deleteProduct(Long id) {
+        productRepository.deleteById(id);
     }
 }

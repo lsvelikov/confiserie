@@ -1,8 +1,8 @@
 package com.example.confiserie.model.entity;
 
-import jakarta.persistence.*;
-
-import java.util.Set;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 
 @Entity
 public class Product extends BaseEntity {
@@ -19,9 +19,8 @@ public class Product extends BaseEntity {
     private Integer quantity;
     @ManyToOne
     private Category category;
-    @ManyToMany
-    private Set<User> usersLikes;
-
+    @ManyToOne
+    private Order order;
     public Product() {
     }
 
@@ -79,12 +78,12 @@ public class Product extends BaseEntity {
         return this;
     }
 
-    public Set<User> getUsersLikes() {
-        return usersLikes;
+    public Order getOrder() {
+        return order;
     }
 
-    public Product setUsersLikes(Set<User> usersLikes) {
-        this.usersLikes = usersLikes;
+    public Product setOrder(Order order) {
+        this.order = order;
         return this;
     }
 }

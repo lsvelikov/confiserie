@@ -10,4 +10,6 @@ public interface ProductService {
     void addProduct(ProductServiceModel productServiceModel) throws IOException;
 
     List<ProductViewDto> findAll();
+
+    void deleteProduct(Long id);
 }

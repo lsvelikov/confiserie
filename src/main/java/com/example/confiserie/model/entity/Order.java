@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "orders")
@@ -23,6 +24,8 @@ public class Order extends BaseEntity {
     private LocalDateTime deliveredTime;
     @ManyToOne
     private User buyer;
+    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
+    private List<Product> orderList;
 
     public Order() {
     }
@@ -78,6 +81,15 @@ public class Order extends BaseEntity {
 
     public Order setBuyer(User buyer) {
         this.buyer = buyer;
+        return this;
+    }
+
+    public List<Product> getOrderList() {
+        return orderList;
+    }
+
+    public Order setOrderList(List<Product> orderList) {
+        this.orderList = orderList;
         return this;
     }
 }
