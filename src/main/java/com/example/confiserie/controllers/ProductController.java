@@ -1,9 +1,11 @@
 package com.example.confiserie.controllers;
 
 import com.example.confiserie.model.dtos.ProductViewDto;
+import com.example.confiserie.model.entity.Product;
 import com.example.confiserie.model.serviceModel.ProductServiceModel;
 import com.example.confiserie.service.ProductService;
 import jakarta.validation.Valid;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -60,6 +62,27 @@ public class ProductController {
         return "redirect:/products/all";
     }
 
+    @GetMapping("/change-product/{id}")
+    public String change(@PathVariable Long id, Model model) {
+
+        model.addAttribute("product", productService.findById(id));
+
+        return "product-update";
+    }
+
+    @PostMapping("/update/{id}")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    public String update(@PathVariable Long id, @ModelAttribute("product") ProductViewDto productViewDto) {
+
+        Product existingProduct = productService.findProduct(id);
+        existingProduct.setId(productViewDto.getId());
+        existingProduct.setDescription(productViewDto.getDescription());
+        existingProduct.setPrice(productViewDto.getPrice());
+        productService.saveUpdate(existingProduct);
+
+        return "redirect:/products/all";
+
+    }
 
     @ModelAttribute
     public ProductServiceModel productServiceModel(){

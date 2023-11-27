@@ -69,10 +69,12 @@ public class SecurityConfiguration {
                 authorizeHttpRequests -> authorizeHttpRequests
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         .requestMatchers("/", "/users/login", "/users/register", "/users/login-error").permitAll()
-                        .requestMatchers("/products/add", "products/delete").hasRole("ADMIN")
+                        .requestMatchers("/products/add", "/products/delete").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/api/products/**").permitAll()
                         .requestMatchers(HttpMethod.PUT, "/api/products/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/assortment/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "products/change-product/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "products/update/**").hasRole("ADMIN")
                         .requestMatchers("/about", "/contact").permitAll()
                         .requestMatchers("/products/all").permitAll()
                         .anyRequest()

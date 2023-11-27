@@ -138,3 +138,11 @@ body > div:nth-child(8) {
     text-align: center;
     padding-top: 100px;
 }
+
+/*update-product*/
+
+body > div > form > section {
+    text-align: center;
+    width: 400px;
+    margin: auto;
+}

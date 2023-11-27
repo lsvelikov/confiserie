@@ -79,4 +79,14 @@ public class ProductServiceImpl implements ProductService {
         Product product = mapper.map(productToUpdate, Product.class);
         productRepository.save(product);
     }
+
+    @Override
+    public Product findProduct(Long id) {
+        return productRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Product not found"));
+    }
+
+    @Override
+    public void saveUpdate(Product existingProduct) {
+        productRepository.save(existingProduct);
+    }
 }
