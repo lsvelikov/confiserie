@@ -24,10 +24,12 @@
                     <li th:text="*{description}" class="list-group-item">Description</li>
                     <li th:text="*{price}" class="list-group-item">Price</li>
                 </ul>
-<!--                <div class="card-body">-->
-<!--                    <a href="#" class="card-link">Card link</a>-->
-<!--                    <a href="#" class="card-link">Another link</a>-->
-<!--                </div>-->
+                <div class="card-body">
+                    <form sec:authorize="hasRole('ADMIN')">
+                    <input  type="submit" class="btn btn-outline-dark" value="Change price">
+                    </form>
+                    <a href="#" class="card-link">Buy</a>
+                </div>
                 <form sec:authorize="hasRole('ADMIN')" th:method="delete" th:action="@{/products/delete/{id}(id = *{id})}">
                     <input type="submit" class="btn btn-dark" value="Delete">
                 </form>

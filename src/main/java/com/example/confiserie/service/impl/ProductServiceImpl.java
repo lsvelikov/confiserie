@@ -8,6 +8,7 @@ import com.example.confiserie.repository.ProductRepository;
 import com.example.confiserie.service.CategoryService;
 import com.example.confiserie.service.CloudinaryService;
 import com.example.confiserie.service.ProductService;
+import com.example.confiserie.service.exeption.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -62,5 +63,20 @@ public class ProductServiceImpl implements ProductService {
     @Transactional
     public void deleteProduct(Long id) {
         productRepository.deleteById(id);
+    }
+
+    @Override
+    public ProductViewDto findById(Long id) {
+        Product product = productRepository.findById(id)
+                .orElseThrow(() -> new ObjectNotFoundException("Product not found"));
+
+        return mapper.map(product, ProductViewDto.class);
+    }
+
+    @Override
+    @Transactional
+    public void updateProduct(ProductViewDto productToUpdate) {
+        Product product = mapper.map(productToUpdate, Product.class);
+        productRepository.save(product);
     }
 }

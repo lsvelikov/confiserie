@@ -8,6 +8,7 @@ public class ConfiserieApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ConfiserieApplication.class, args);
+
     }
 
 }

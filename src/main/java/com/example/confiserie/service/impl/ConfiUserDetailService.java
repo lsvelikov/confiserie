@@ -13,7 +13,6 @@ import java.util.stream.Collectors;
 
 public class ConfiUserDetailService implements UserDetailsService {
 
-
     private final UserRepository userRepository;
 
     public ConfiUserDetailService(UserRepository userRepository) {

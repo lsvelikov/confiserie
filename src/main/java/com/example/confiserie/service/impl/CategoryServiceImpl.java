@@ -6,6 +6,7 @@ import com.example.confiserie.model.entity.Category;
 import com.example.confiserie.model.enums.CategoryEnum;
 import com.example.confiserie.repository.CategoryRepository;
 import com.example.confiserie.service.CategoryService;
+import com.example.confiserie.service.exeption.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -43,7 +44,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public Category findByCategoryNameEnum(CategoryEnum categoryEnum) {
         return categoryRepository.findByName(categoryEnum)
-                .orElseThrow(() -> new IllegalStateException("Object does not exist"));
+                .orElseThrow(() -> new ObjectNotFoundException("Category does not exist"));
     }
 
     @Override
@@ -90,7 +91,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     private CategoryViewDto getCategoryViewDto(CategoryEnum categoryEnum) {
         Category category = categoryRepository.findByName(categoryEnum)
-                .orElseThrow(() -> new IllegalStateException("Category does not exist"));
+                .orElseThrow(() -> new ObjectNotFoundException("Category does not exist"));
         CategoryViewDto categoryViewDto = new CategoryViewDto();
         if (category != null) {
             categoryViewDto.setName(category.getName());

@@ -4,6 +4,7 @@ import com.example.confiserie.model.entity.Role;
 import com.example.confiserie.model.enums.RoleNameEnum;
 import com.example.confiserie.repository.RoleRepository;
 import com.example.confiserie.service.RoleService;
+import com.example.confiserie.service.exeption.ObjectNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
@@ -35,6 +36,6 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public Role findByName(RoleNameEnum roleNameEnum) {
         return roleRepository.findByName(roleNameEnum)
-                .orElse(null);
+                .orElseThrow(() -> new ObjectNotFoundException("Role does not exist"));
     }
 }
