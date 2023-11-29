@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head}"></head>
+<body>
+<div th:replace="~{fragments/navbar}"></div>
+<div class="container-fluid">
+    <section class="welcome">
+        <h1>Welcome to Users page</h1>
+    </section>
+    <section class="deals">
+        <ul>
+            <li><a href="/managers/all">
+                <img src="/images/o-logo-management-for-company-letter-template-illustration-for-your-brand-vector.jpg" alt="pic">
+                <h2>Managers</h2>
+            </a></li>
+            <li><a href="/users/all">
+                <img src="/images/user-286.png" alt="pic">
+                <h2>Users</h2>
+            </a></li>
+        </ul>
+    </section>
+</div>
+<footer th:replace="~{/fragments/footer}"></footer>
+</body>
+</html>

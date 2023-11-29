@@ -19,47 +19,8 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfiguration {
 
-
-//    private final UserRepository userRepository;
-//
-//
-//    private final JwtAuthenticationFilter jwtFilter;
-//
-//    public SecurityConfiguration(UserRepository userRepository, JwtAuthenticationFilter jwtFilter) {
-//        this.userRepository = userRepository;
-//        this.jwtFilter = jwtFilter;
-//    }
-//
-//    @Bean
-//    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
-//        return authenticationConfiguration.getAuthenticationManager();
-//    }
-//    @Bean
-//    public AuthenticationProvider authenticationProvider() {
-//        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
-//        authProvider.setUserDetailsService(userDetailsService(userRepository));
-//        authProvider.setPasswordEncoder(passwordEncoder());
-//        return authProvider;
-//    }
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity httpSecurity) throws Exception {
-
-
-//        httpSecurity
-//                .csrf(AbstractHttpConfigurer::disable)
-//                .cors(AbstractHttpConfigurer::disable)
-//                .cors(withDefaults())
-//                .authorizeHttpRequests(request -> request.requestMatchers("/**")
-//                        .permitAll().anyRequest().authenticated())
-//                .sessionManagement(manager -> manager.sessionCreationPolicy(STATELESS))
-//                .authenticationProvider(authenticationProvider())
-//                .exceptionHandling(configurer -> configurer.authenticationEntryPoint((request, response, exception) ->
-//                        response.sendError(HttpServletResponse.SC_UNAUTHORIZED,
-//                                exception.getMessage())))
-//                .addFilterBefore(
-//                        jwtFilter, UsernamePasswordAuthenticationFilter.class);
-//        return httpSecurity.build();
-
 
         return httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
@@ -70,11 +31,16 @@ public class SecurityConfiguration {
                         .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
                         .requestMatchers("/", "/users/login", "/users/register", "/users/login-error").permitAll()
                         .requestMatchers("/products/add", "/products/delete").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET,"/admin/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/api/products/**").permitAll()
                         .requestMatchers(HttpMethod.PUT, "/api/products/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.GET, "/assortment/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "products/change-product/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.POST, "products/update/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/users/make-admin/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/users/make-manager/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/managers/make-admin/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/managers/delete-manager/**").hasRole("ADMIN")
                         .requestMatchers("/about", "/contact").permitAll()
                         .requestMatchers("/products/all").permitAll()
                         .anyRequest()

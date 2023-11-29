@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="~{fragments/head}"></head>
 <body>
 <nav th:replace="~{fragments/navbar}"></nav>
 
-<h1>Welcome to the admin page</h1>
+<h1>Welcome to the manager page</h1>
 
+<h3 th:if="${allManagers.size() == 0}">
+    There are no available managers at the moment
+</h3>
 <div  class="row mx-auto d-flex flex-row justify-content-center">
-    <div th:each="a : ${allAdmins}" th:object="${a}">
+    <div th:each="m : ${allManagers}" th:object="${m}">
         <div class="card" style="width: 18rem;">
             <div class="card-body">
                 <h5 th:text="*{firstName}" class="card-title">First Name</h5>
@@ -20,11 +24,12 @@
             <!--                <form sec:authorize="hasRole('ADMIN')" th:method="delete" th:action="@{/products/delete/{id}(id = *{id})}">-->
             <!--                    <input type="submit" class="btn btn-dark" value="Delete">-->
             <!--                </form>-->
+            <div>
+                <a sec:authorize="hasRole('ADMIN')" th:href="@{/managers/make-admin/{id}(id = ${m.id})}" class="card-link">Make Admin</a>
+                <a sec:authorize="hasRole('ADMIN')" th:href="@{/managers/delete-manager/{id}(id = ${m.id})}" class="card-link">Delete Manager</a>
+            </div>
         </div>
     </div>
-</div>
-<div>
-    <a class="text-primary" href="/users/categories">Get Users</a>
 </div>
 <footer th:replace="~{/fragments/footer}"></footer>
 </body>

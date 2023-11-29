@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/head}"></head>
+<body>
+<nav th:replace="~{fragments/navbar}"></nav>
+
+<div class="container-fluid">
+    <div class="container text-light text-center">
+        <h2 class="text-center text-dark mt-5">Welcome to the users page</h2>
+    </div>
+    <h3 th:if="${allUsers.size() == 0}">
+        There are no available users at the moment
+    </h3>
+    <div  class="row mx-auto d-flex flex-row justify-content-center">
+        <div th:each="u : ${allUsers}" th:object="${u}">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 th:text="*{firstName}" class="card-title">First Name</h5>
+                    <h5 th:text="*{lastName}" class="card-title">Last Name</h5>
+                    <h5 th:text="*{email}" class="card-title">Username</h5>
+                </div>
+                <div>
+                    <a sec:authorize="hasRole('ADMIN')" th:href="@{/users/make-admin/{id}(id = ${u.id})}" class="card-link">Make Admin</a>
+                    <a sec:authorize="hasRole('ADMIN')" th:href="@{/users/make-manager/{id}(id = ${u.id})}" class="card-link">Make Manager</a>
+                </div>
+<!--                <a sec:authorize="hasRole('ADMIN')" th:href="@{/products/change-product/{id}(id = ${p.id})}" class="btn btn-success">Update Product</a>-->
+<!--                <a class="btn btn-outline-success">Buy</a>-->
+<!--                <form sec:authorize="hasRole('ADMIN')" th:method="delete" th:action="@{/products/delete/{id}(id = *{id})}">-->
+<!--                    <input type="submit" class="btn btn-dark" value="Delete">-->
+<!--                </form>-->
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
