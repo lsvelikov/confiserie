@@ -7,26 +7,20 @@
 
 <h1>Welcome to the admin page</h1>
 
-<div  class="row mx-auto d-flex flex-row justify-content-center">
+<section class="gallery">
     <div th:each="a : ${allAdmins}" th:object="${a}">
-        <div class="card" style="width: 18rem;">
-            <div class="card-body">
-                <h5 th:text="*{firstName}" class="card-title">First Name</h5>
-                <h5 th:text="*{lastName}" class="card-title">Last Name</h5>
-                <h5 th:text="*{email}" class="card-title">Username</h5>
-            </div>
-            <!--                <a sec:authorize="hasRole('ADMIN')" th:href="@{/products/change-product/{id}(id = ${p.id})}" class="btn btn-success">Update Product</a>-->
-            <!--                <a class="btn btn-outline-success">Buy</a>-->
-            <!--                <form sec:authorize="hasRole('ADMIN')" th:method="delete" th:action="@{/products/delete/{id}(id = *{id})}">-->
-            <!--                    <input type="submit" class="btn btn-dark" value="Delete">-->
-            <!--                </form>-->
-        </div>
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        <h5 th:text="*{firstName}" class="card-title">First Name</h5>
+                        <h5 th:text="*{lastName}" class="card-title">Last Name</h5>
+                        <h5 th:text="*{email}" class="card-title">Username</h5>
+                    </div>
+                </div>
     </div>
-</div>
+</section>
 <div>
     <a class="text-primary" href="/users/categories">Get Users</a>
 </div>
-
 </body>
 <footer th:replace="~{/fragments/footer}"></footer>
 </html>

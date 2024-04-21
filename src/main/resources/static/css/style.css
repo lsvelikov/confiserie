@@ -1,6 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital@1&display=swap');
 
 /*index*/
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 
 body {
     font-family: "PT Sans", sans-serif;
@@ -176,7 +181,19 @@ body > div > form > section {
 /*admin*/
 
 body > h1 {
+    padding-top: 80px;
     padding-bottom: 100px;
+}
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.gallery .card{
+    margin: 0.5em;
+}
+.card{
+    text-align: center;
 }
 
 body > div:nth-child(9) {
@@ -192,12 +209,8 @@ text-align: center;
 
 /*users*/
 
-body > div > div.row.mx-auto.d-flex.flex-row.justify-content-center {
-    padding-top: 50px;
-}
-
-body > div > div.row.mx-auto.d-flex.flex-row.justify-content-center > div {
-    text-align: center;
+.text-center {
+    padding-bottom: 1.5em;
 }
 
 /*choose-product*/
