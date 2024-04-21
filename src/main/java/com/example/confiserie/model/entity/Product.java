@@ -19,8 +19,7 @@ public class Product extends BaseEntity {
     private Integer quantity;
     @ManyToOne
     private Category category;
-    @ManyToOne
-    private Order order;
+
     public Product() {
     }
 
@@ -75,15 +74,6 @@ public class Product extends BaseEntity {
 
     public Product setCategory(Category category) {
         this.category = category;
-        return this;
-    }
-
-    public Order getOrder() {
-        return order;
-    }
-
-    public Product setOrder(Order order) {
-        this.order = order;
         return this;
     }
 }

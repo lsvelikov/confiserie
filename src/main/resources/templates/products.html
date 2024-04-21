@@ -22,17 +22,19 @@
                 </div>
                 <ul class="list-group list-group-flush">
                     <li th:text="*{description}" class="list-group-item">Description</li>
-                    <li th:text="*{price}" class="list-group-item">Price</li>
+                    <li th:text="*{price}" class="list-group-item"><a>Price:</a>Price</li>
+                    <li th:if="${p.getQuantity() <= 10}"
+                        th:text="*{quantity}" class="list-group-item">Quantity</li>
                 </ul>
-                <a sec:authorize="hasRole('ADMIN')" th:href="@{/products/change-product/{id}(id = ${p.id})}" class="btn btn-success">Update Product</a>
-                <a class="btn btn-outline-success">Buy</a>
-                <form sec:authorize="hasRole('ADMIN')" th:method="delete" th:action="@{/products/delete/{id}(id = *{id})}">
+                <a sec:authorize="hasAnyRole('ADMIN', 'MANAGER')" th:href="@{/products/change-product/{id}(id = ${p.id})}" class="btn btn-success">Update Product</a>
+                <a th:href="@{/products/buy/{id}(id = ${p.id})}" class="btn btn-outline-success">Choose product</a>
+                <form sec:authorize="hasAnyRole('ADMIN', 'MANAGER')" th:method="delete" th:action="@{/products/delete/{id}(id = ${p.id})}">
                     <input type="submit" class="btn btn-dark" value="Delete">
                 </form>
             </div>
         </div>
     </div>
 </div>
-
+<footer th:replace="~{/fragments/footer}"></footer>
 </body>
 </html>

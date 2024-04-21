@@ -8,8 +8,9 @@
     <section class="nav-item">
             <p><a href="/">Confi App</a></p>
             <ul>
-                <li sec:authorize="hasRole('ADMIN')"><a href="/products/add">Add Product</a></li>
+                <li sec:authorize="hasAnyRole('ADMIN', 'MANAGER')"><a href="/products/add">Add Product</a></li>
                 <li sec:authorize="hasRole('ADMIN')"><a href="/admin">Admin</a></li>
+                <li sec:authorize="isAuthenticated()"><a href="/orders/all">Orders</a></li>
                 <li><a href="/about">About Us</a></li>
                 <li><a href="/contact">Contact Us</a></li>
                 <li><a href="/products/all">Products</a></li>

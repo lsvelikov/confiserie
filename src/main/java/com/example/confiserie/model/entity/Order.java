@@ -1,59 +1,32 @@
 package com.example.confiserie.model.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 
-import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "orders")
 public class Order extends BaseEntity {
-
-    @Column(name = "created_time", nullable = false)
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
-    private LocalDateTime createdTime;
     @Column
-    private Double price;
-    @Column(name = "product_name", nullable = false)
-    private String productName;
+    private Double totalPrice;
     @ManyToOne
     private OrderPaymentMethod paymentMethod;
-    @Column(name = "delivered_time", nullable = false)
-    @JsonFormat(pattern = "dd/MM/yyyy HH:mm")
-    private LocalDateTime deliveredTime;
+    private boolean isPlaced;
     @ManyToOne
     private User buyer;
-    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER)
-    private List<Product> orderList;
+    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<ShoppingBasket> shoppingBaskets = new ArrayList<>();
 
     public Order() {
     }
 
-    public LocalDateTime getCreatedTime() {
-        return createdTime;
+    public Double getTotalPrice() {
+        return totalPrice;
     }
 
-    public Order setCreatedTime(LocalDateTime createdTime) {
-        this.createdTime = createdTime;
-        return this;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public Order setPrice(Double price) {
-        this.price = price;
-        return this;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public Order setProductName(String productName) {
-        this.productName = productName;
+    public Order setTotalPrice(Double totalPrice) {
+        this.totalPrice = totalPrice;
         return this;
     }
 
@@ -66,12 +39,12 @@ public class Order extends BaseEntity {
         return this;
     }
 
-    public LocalDateTime getDeliveredTime() {
-        return deliveredTime;
+    public boolean isPlaced() {
+        return isPlaced;
     }
 
-    public Order setDeliveredTime(LocalDateTime deliveredTime) {
-        this.deliveredTime = deliveredTime;
+    public Order setPlaced(boolean placed) {
+        isPlaced = placed;
         return this;
     }
 
@@ -84,12 +57,12 @@ public class Order extends BaseEntity {
         return this;
     }
 
-    public List<Product> getOrderList() {
-        return orderList;
+    public List<ShoppingBasket> getShoppingBaskets() {
+        return shoppingBaskets;
     }
 
-    public Order setOrderList(List<Product> orderList) {
-        this.orderList = orderList;
+    public Order setShoppingBaskets(List<ShoppingBasket> shoppingBaskets) {
+        this.shoppingBaskets = shoppingBaskets;
         return this;
     }
 }

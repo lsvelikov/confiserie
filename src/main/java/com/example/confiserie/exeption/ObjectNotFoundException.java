@@ -1,4 +1,4 @@
-package com.example.confiserie.service.exeption;
+package com.example.confiserie.exeption;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

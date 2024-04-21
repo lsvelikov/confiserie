@@ -3,9 +3,14 @@ package com.example.confiserie.controllers;
 import com.example.confiserie.model.dtos.ProductViewDto;
 import com.example.confiserie.model.entity.Product;
 import com.example.confiserie.model.serviceModel.ProductServiceModel;
+import com.example.confiserie.service.ItemService;
+import com.example.confiserie.service.OrderService;
 import com.example.confiserie.service.ProductService;
 import jakarta.validation.Valid;
+import org.modelmapper.ModelMapper;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,9 +25,15 @@ import java.util.List;
 public class ProductController {
 
     private final ProductService productService;
+    private final OrderService orderService;
+    private final ItemService itemService;
+    private final ModelMapper mapper;
 
-    public ProductController(ProductService productService) {
+    public ProductController(ProductService productService, OrderService orderService, ItemService itemService, ModelMapper mapper) {
         this.productService = productService;
+        this.orderService = orderService;
+        this.itemService = itemService;
+        this.mapper = mapper;
     }
 
     @GetMapping("/add")
@@ -78,10 +89,28 @@ public class ProductController {
         existingProduct.setId(productViewDto.getId());
         existingProduct.setDescription(productViewDto.getDescription());
         existingProduct.setPrice(productViewDto.getPrice());
+        existingProduct.setQuantity(productViewDto.getQuantity());
         productService.saveUpdate(existingProduct);
 
         return "redirect:/products/all";
 
+    }
+
+    @GetMapping("/buy/{id}")
+    public String productToBuy(@PathVariable Long id, Model model) {
+
+        model.addAttribute("product", productService.findById(id));
+
+        return "choose-product";
+    }
+
+    @PostMapping("/buy/{id}")
+    public String chosenProduct(@PathVariable Long id,
+                                @ModelAttribute("product") ProductViewDto productViewDto,
+                                @AuthenticationPrincipal UserDetails buyer) {
+
+
+        return "redirect:/orders/all";
     }
 
     @ModelAttribute

@@ -1,6 +1,8 @@
 package com.example.confiserie.controllers;
 
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,7 +22,8 @@ public class UserLoginController {
     @PostMapping("/login-error")
     public String onFailure(
             @ModelAttribute("email") String email,
-            Model model) {
+            Model model,
+            @AuthenticationPrincipal UserDetails user) {
 
         model.addAttribute("email", email);
         model.addAttribute("badCredentials", "true");

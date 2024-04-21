@@ -4,7 +4,7 @@ import com.example.confiserie.model.entity.Role;
 import com.example.confiserie.model.enums.RoleNameEnum;
 import com.example.confiserie.repository.RoleRepository;
 import com.example.confiserie.service.RoleService;
-import com.example.confiserie.service.exeption.ObjectNotFoundException;
+import com.example.confiserie.exeption.ObjectNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.Arrays;

@@ -6,7 +6,7 @@ import com.example.confiserie.model.entity.Category;
 import com.example.confiserie.model.enums.CategoryEnum;
 import com.example.confiserie.repository.CategoryRepository;
 import com.example.confiserie.service.CategoryService;
-import com.example.confiserie.service.exeption.ObjectNotFoundException;
+import com.example.confiserie.exeption.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 

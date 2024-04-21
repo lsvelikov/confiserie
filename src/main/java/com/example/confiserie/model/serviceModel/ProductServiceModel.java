@@ -68,11 +68,11 @@ public class ProductServiceModel {
         return this;
     }
 
-    public Integer getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public ProductServiceModel setQuantity(Integer quantity) {
+    public ProductServiceModel setQuantity(int quantity) {
         this.quantity = quantity;
         return this;
     }

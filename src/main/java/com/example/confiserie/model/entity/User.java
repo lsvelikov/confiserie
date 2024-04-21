@@ -20,13 +20,14 @@ public class User extends BaseEntity {
     private String phoneNumber;
     @Column(nullable = false)
     private String address;
-
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "users_roles",
     joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
     inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
     private List<Role> roles;
 
+    @OneToMany(mappedBy = "buyer", fetch = FetchType.EAGER)
+    private List<Order> orders;
     public User() {
     }
 
@@ -85,13 +86,21 @@ public class User extends BaseEntity {
         return this;
     }
 
-
     public List<Role> getRoles() {
         return roles;
     }
 
     public User setRoles(List<Role> roles) {
         this.roles = roles;
+        return this;
+    }
+
+    public List<Order> getOrders() {
+        return orders;
+    }
+
+    public User setOrders(List<Order> orders) {
+        this.orders = orders;
         return this;
     }
 }

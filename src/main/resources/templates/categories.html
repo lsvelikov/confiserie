@@ -19,7 +19,7 @@
                                   <li th:text="*{description}" class="list-group-item">Description</li>
                                   <li th:text="*{price}" class="list-group-item">Price</li>
                               </ul>
-                              <a class="btn btn-outline-success">Buy</a>
+                              <a th:href="@{/products/buy/{id}(id = ${j.id})}" class="btn btn-outline-success">Choose product</a>
                           </div>
                       </div>
                   </div>
@@ -36,7 +36,7 @@
                                 <li th:text="*{description}" class="list-group-item">Description</li>
                                 <li th:text="*{price}" class="list-group-item">Price</li>
                             </ul>
-                            <a class="btn btn-outline-success">Buy</a>
+                            <a th:href="@{/products/buy/{id}(id = ${t.id})}" class="btn btn-outline-success">Choose product</a>
                         </div>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                                 <li th:text="*{description}" class="list-group-item">Description</li>
                                 <li th:text="*{price}" class="list-group-item">Price</li>
                             </ul>
-                            <a class="btn btn-outline-success">Buy</a>
+                            <a th:href="@{/products/buy/{id}(id = ${cake.id})}" class="btn btn-outline-success">Choose product</a>
                         </div>
                     </div>
                 </div>
@@ -70,7 +70,7 @@
                                 <li th:text="*{description}" class="list-group-item">Description</li>
                                 <li th:text="*{price}" class="list-group-item">Price</li>
                             </ul>
-                            <a class="btn btn-outline-success">Buy</a>
+                            <a th:href="@{/products/buy/{id}(id = ${tart.id})}" class="btn btn-outline-success">Choose product</a>
                         </div>
                     </div>
                 </div>
@@ -87,7 +87,7 @@
                                 <li th:text="*{description}" class="list-group-item">Description</li>
                                 <li th:text="*{price}" class="list-group-item">Price</li>
                             </ul>
-                            <a class="btn btn-outline-success">Buy</a>
+                            <a th:href="@{/products/buy/{id}(id = ${m.id})}" class="btn btn-outline-success">Choose product</a>
                         </div>
                     </div>
                 </div>

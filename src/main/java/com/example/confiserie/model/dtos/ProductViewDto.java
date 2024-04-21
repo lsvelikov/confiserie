@@ -6,6 +6,7 @@ public class ProductViewDto {
     private String name;
     private String description;
     private Double price;
+    private Integer quantity;
     private String imageUrl;
 
     public ProductViewDto() {
@@ -44,6 +45,15 @@ public class ProductViewDto {
 
     public ProductViewDto setPrice(Double price) {
         this.price = price;
+        return this;
+    }
+
+    public Integer getQuantity() {
+        return quantity;
+    }
+
+    public ProductViewDto setQuantity(Integer quantity) {
+        this.quantity = quantity;
         return this;
     }
 

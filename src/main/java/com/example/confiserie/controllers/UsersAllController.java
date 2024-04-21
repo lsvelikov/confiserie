@@ -49,4 +49,5 @@ public class UsersAllController {
 
         return "redirect:/managers/all";
     }
+
 }

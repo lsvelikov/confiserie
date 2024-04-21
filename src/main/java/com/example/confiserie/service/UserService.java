@@ -2,6 +2,7 @@ package com.example.confiserie.service;
 
 import com.example.confiserie.model.dtos.UserRegisterDto;
 import com.example.confiserie.model.dtos.UserViewDto;
+import com.example.confiserie.model.entity.User;
 
 import java.util.List;
 
@@ -22,4 +23,8 @@ public interface UserService {
     void makeManager(Long id);
 
     void deleteManager(Long id);
+    User findByEmail(String email);
+
+    void save(User user);
 }
+

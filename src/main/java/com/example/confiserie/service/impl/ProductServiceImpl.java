@@ -1,14 +1,12 @@
 package com.example.confiserie.service.impl;
 
+import com.example.confiserie.exeption.ObjectNotFoundException;
 import com.example.confiserie.model.dtos.ProductViewDto;
 import com.example.confiserie.model.entity.Category;
 import com.example.confiserie.model.entity.Product;
 import com.example.confiserie.model.serviceModel.ProductServiceModel;
 import com.example.confiserie.repository.ProductRepository;
-import com.example.confiserie.service.CategoryService;
-import com.example.confiserie.service.CloudinaryService;
-import com.example.confiserie.service.ProductService;
-import com.example.confiserie.service.exeption.ObjectNotFoundException;
+import com.example.confiserie.service.*;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,12 +23,18 @@ public class ProductServiceImpl implements ProductService {
     private final CategoryService categoryService;
     private final CloudinaryService cloudinaryService;
     private final ModelMapper mapper;
+    private final UserService userService;
+    private final OrderService orderService;
+    private final ItemService itemService;
 
-    public ProductServiceImpl(ProductRepository productRepository, CategoryService categoryService, CloudinaryService cloudinaryService, ModelMapper mapper) {
+    public ProductServiceImpl(ProductRepository productRepository, CategoryService categoryService, CloudinaryService cloudinaryService, ModelMapper mapper, UserService userService, OrderService orderService, ItemService itemService) {
         this.productRepository = productRepository;
         this.categoryService = categoryService;
         this.cloudinaryService = cloudinaryService;
         this.mapper = mapper;
+        this.userService = userService;
+        this.orderService = orderService;
+        this.itemService = itemService;
     }
 
     @Override
@@ -39,13 +43,13 @@ public class ProductServiceImpl implements ProductService {
         String imageUrl = cloudinaryService.uploadImage(img);
 
         Product product = new Product();
-                product.setName(productServiceModel.getName())
+        product.setName(productServiceModel.getName())
                 .setImageUrl(imageUrl)
                 .setQuantity(productServiceModel.getQuantity())
                 .setPrice(productServiceModel.getPrice())
                 .setDescription(productServiceModel.getDescription());
         Category category = categoryService.findByCategoryNameEnum(productServiceModel.getCategory());
-                product.setCategory(category);
+        product.setCategory(category);
 
         productRepository.save(product);
     }
@@ -82,11 +86,13 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public Product findProduct(Long id) {
-        return productRepository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Product not found"));
+        return productRepository.findById(id)
+                .orElseThrow(() -> new ObjectNotFoundException("Product not found"));
     }
 
     @Override
     public void saveUpdate(Product existingProduct) {
         productRepository.save(existingProduct);
     }
+
 }

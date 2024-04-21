@@ -1,14 +1,14 @@
 package com.example.confiserie.service.impl;
 
-import com.example.confiserie.model.dtos.UserViewDto;
 import com.example.confiserie.model.dtos.UserRegisterDto;
+import com.example.confiserie.model.dtos.UserViewDto;
 import com.example.confiserie.model.entity.Role;
 import com.example.confiserie.model.entity.User;
 import com.example.confiserie.model.enums.RoleNameEnum;
 import com.example.confiserie.repository.UserRepository;
 import com.example.confiserie.service.RoleService;
 import com.example.confiserie.service.UserService;
-import com.example.confiserie.service.exeption.ObjectNotFoundException;
+import com.example.confiserie.exeption.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -134,6 +134,17 @@ public class UserServiceImpl implements UserService {
         Role roleUser = roleService.findByName(RoleNameEnum.USER);
         roles.add(roleUser);
         user.setRoles(roles);
+        userRepository.save(user);
+    }
+
+    @Override
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email)
+                .orElseThrow(() -> new ObjectNotFoundException("User not found"));
+    }
+
+    @Override
+    public void save(User user) {
         userRepository.save(user);
     }
 
