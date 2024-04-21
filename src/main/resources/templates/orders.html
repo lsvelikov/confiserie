@@ -1,0 +1,83 @@
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns="http://www.w3.org/1999/xhtml"-->
+<!--      xmlns:th="http://www.thymeleaf.org"-->
+<!--      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">-->
+<!--<head th:replace="~{fragments/head}"></head>-->
+<!--<body>-->
+<!--<nav th:replace="~{fragments/navbar}"></nav>-->
+
+<!--<div th:method="post" th:action="@{/orders/all}" class="container-fluid">-->
+<!--    <div class="container text-light text-center">-->
+<!--        <h2 class="text-center text-dark mt-5">Orders</h2>-->
+<!--    </div>-->
+<!--    <h3 th:if="${orders.size() == 0}">-->
+<!--        There are no available orders at the moment-->
+<!--    </h3>-->
+<!--    <div  class="row mx-auto d-flex flex-row justify-content-center">-->
+<!--        <div th:each="o : ${orders}" th:object="${o}">-->
+<!--            <div class="card" style="width: 18rem;">-->
+<!--                <div class="card-body">-->
+<!--                    <h5 th:text="*{products}" class="card-title">Products</h5>-->
+<!--                </div>-->
+<!--                <ul class="list-group list-group-flush">-->
+<!--&lt;!&ndash;                    <li th:text="*{description}" class="list-group-item">Description</li>&ndash;&gt;-->
+<!--                    <li th:text="*{price}" class="list-group-item"><a>Price:</a>Price</li>-->
+<!--                    <li th:text="*{buyer.getFirstName()}" class="list-group-item">Quantity</li>-->
+<!--                </ul>-->
+<!--&lt;!&ndash;                <a sec:authorize="hasAnyRole('ADMIN', 'MANAGER')" th:href="@{/products/change-product/{id}(id = ${p.id})}" class="btn btn-success">Update Product</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                <a th:href="@{/products/buy/{id}(id = ${p.id})}" class="btn btn-outline-success">Choose product</a>&ndash;&gt;-->
+<!--&lt;!&ndash;                <form sec:authorize="hasAnyRole('ADMIN', 'MANAGER')" th:method="delete" th:action="@{/products/delete/{id}(id = ${p.id})}">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input type="submit" class="btn btn-dark" value="Delete">&ndash;&gt;-->
+<!--                </form>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--<footer th:replace="~{/fragments/footer}"></footer>-->
+<!--</body>-->
+<!--</html>-->
+
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:replace="~{fragments/head}"></head>
+<body>
+<nav th:replace="~{fragments/navbar}"></nav>
+
+<div class="container-fluid">
+    <div class="container text-light text-center">
+        <h2 class="text-center text-dark mt-5">Orders</h2>
+    </div>
+    <div th:each="p : ${products}" th:object="${p}" class="row mx-auto d-flex flex-row justify-content-center">
+        <div>
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <img th:src="*{imageUrl}" class="card-img-top" alt="pic">
+                </div>
+                <div class="card-body">
+                    <h5 th:text="*{name}" class="card-title">Name</h5>
+                </div>
+                <div class="card-body">
+                    <h5 th:text="*{quantity}" class="card-title">Quantity</h5>
+                </div>
+
+
+                <ul class="list-group list-group-flush">
+                    <!--                    <li th:text="*{description}" class="list-group-item">Description</li>-->
+                    <li th:text="*{price}" class="list-group-item"><a>Price:</a>Price</li>
+<!--                    <li th:text="${order.getBuyer().firstName}" class="list-group-item">Quantity</li>-->
+                </ul>
+                <!--                <a sec:authorize="hasAnyRole('ADMIN', 'MANAGER')" th:href="@{/products/change-product/{id}(id = ${p.id})}" class="btn btn-success">Update Product</a>-->
+                <!--                <a th:href="@{/products/buy/{id}(id = ${p.id})}" class="btn btn-outline-success">Choose product</a>-->
+                <!--                <form sec:authorize="hasAnyRole('ADMIN', 'MANAGER')" th:method="delete" th:action="@{/products/delete/{id}(id = ${p.id})}">-->
+                <!--                    <input type="submit" class="btn btn-dark" value="Delete">-->
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<footer th:replace="~{/fragments/footer}"></footer>
+</body>
+</html>
