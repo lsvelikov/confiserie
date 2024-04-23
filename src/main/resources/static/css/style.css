@@ -124,6 +124,10 @@ body > div > h3 {
     text-align: center;
     padding-top: 120px;
 }
+.row {
+    width: 1240px;
+    gap: 1em;
+}
 
 
 /*about*/
