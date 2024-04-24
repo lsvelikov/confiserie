@@ -13,24 +13,24 @@
     <h3 th:if="${products.size() == 0}">
         There are no available products at the moment
     </h3>
-    <div  class="row mx-auto d-flex flex-row justify-content-center">
+    <div class="products">
         <div th:each="p : ${products}" th:object="${p}">
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
                     <img th:src="*{imageUrl}" class="card-img-top" alt="pic">
                     <h5 th:text="*{name}" class="card-title">Name</h5>
+                    <ul class="list-group list-group-flush">
+                        <li th:text="*{description}" class="list-group-item">Description</li>
+                        <li th:text="*{price}" class="list-group-item"><a>Price:</a>Price</li>
+                        <li th:if="${p.getQuantity() <= 10}"
+                            th:text="*{quantity}" class="list-group-item">Quantity</li>
+                    </ul>
+                    <a sec:authorize="hasAnyRole('ADMIN', 'MANAGER')" th:href="@{/products/change-product/{id}(id = ${p.id})}" class="btn btn-success">Update Product</a>
+                    <a th:href="@{/products/buy/{id}(id = ${p.id})}" class="btn btn-outline-success">Choose product</a>
+                    <form sec:authorize="hasAnyRole('ADMIN', 'MANAGER')" th:method="delete" th:action="@{/products/delete/{id}(id = ${p.id})}">
+                        <input type="submit" class="btn btn-dark" value="Delete">
+                    </form>
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li th:text="*{description}" class="list-group-item">Description</li>
-                    <li th:text="*{price}" class="list-group-item"><a>Price:</a>Price</li>
-                    <li th:if="${p.getQuantity() <= 10}"
-                        th:text="*{quantity}" class="list-group-item">Quantity</li>
-                </ul>
-                <a sec:authorize="hasAnyRole('ADMIN', 'MANAGER')" th:href="@{/products/change-product/{id}(id = ${p.id})}" class="btn btn-success">Update Product</a>
-                <a th:href="@{/products/buy/{id}(id = ${p.id})}" class="btn btn-outline-success">Choose product</a>
-                <form sec:authorize="hasAnyRole('ADMIN', 'MANAGER')" th:method="delete" th:action="@{/products/delete/{id}(id = ${p.id})}">
-                    <input type="submit" class="btn btn-dark" value="Delete">
-                </form>
             </div>
         </div>
     </div>

@@ -94,41 +94,76 @@ body > form > section > div:nth-child(10) > button{
 
 /*add-product*/
 
-body > form{
-    padding-left: 50px;
-    width: 400px;
-    text-align: center;
-}
+/*body > form{*/
+/*    padding-left: 50px;*/
+/*    width: 400px;*/
+/*    text-align: center;*/
+/*}*/
 
-body > div {
-    margin: auto;
-}
+/*body > div {*/
+/*    margin: auto;*/
+/*}*/
 
 /*products*/
 
-body > div > section.welcome{
-    text-align: center;
-    padding-top: 50px;
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5em;
+    justify-content: center;
+}
+.card-img-top {
+    max-width: 100%;
+    height: auto;
+    list-style: none outside;
+    padding: 1em 0.5em;
+    background-color: white;
+    display: flex;
+    flex: 0 0 30%;
+    align-items: center;
+    box-shadow:
+            0 0 1em 0 rgb(0, 0, 0, 0.3),
+            0 0 0.4em 0 rgb(0, 0, 0, 0.7) inset;
+}
+.card-body h5 {
+    margin-top: 0.5em;
+}
+.card-body ul {
+    margin-bottom: 0.5em;
+    /*height: 207px;*/
+}
+.card-body a {
+    margin-bottom: 0.5em;
 }
 
-body > div > section.welcome > h1{
-    padding-bottom: 30px;
-}
+/*body > div > section.welcome{*/
+/*    text-align: center;*/
+/*    padding-top: 50px;*/
+/*}*/
 
-body > div > section.deals{
-    text-align: center;
-    padding-bottom: 25px;
-}
+/*body > div > section.welcome > h1{*/
+/*    padding-bottom: 30px;*/
+/*}*/
 
-body > div > h3 {
-    text-align: center;
-    padding-top: 120px;
-}
-.row {
-    width: 1240px;
-    gap: 1em;
-}
+/*body > div > section.deals{*/
+/*    text-align: center;*/
+/*    padding-bottom: 25px;*/
+/*}*/
 
+/*body > div > h3 {*/
+/*    text-align: center;*/
+/*    padding-top: 120px;*/
+/*}*/
+/*.row {*/
+/*    width: 1240px;*/
+/*    gap: 1em;*/
+/*    display: flex;*/
+/*    flex-wrap: wrap;*/
+/*}*/
+/*.row.card{*/
+/*    width: 290px;*/
+/*    height: 500px;*/
+/*}*/
 
 /*about*/
 
