@@ -132,7 +132,6 @@ body > form > section > div:nth-child(10) > button{
 }
 .card-body ul {
     margin-bottom: 0.5em;
-    /*height: 207px;*/
 }
 .card-body a {
     margin-bottom: 0.5em;
@@ -240,6 +239,26 @@ body > h1 {
 body > div:nth-child(9) {
     text-align: center;
     padding-top: 75px;
+}
+/*users-page*/
+.welcome > h1 {
+    text-align: center;
+    margin: 1.5em 0;
+}
+.deals {
+    margin-top: 3.5em;
+}
+.deals ul {
+    display: flex;
+    text-align: center;
+    justify-content: space-evenly;
+
+}
+
+.deals ul li img {
+    width: 200px;
+    height: 200px;
+
 }
 
 /*managers*/
