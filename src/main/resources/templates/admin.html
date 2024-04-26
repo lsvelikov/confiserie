@@ -5,7 +5,7 @@
 <body>
 <nav th:replace="~{fragments/navbar}"></nav>
 
-<h1>Welcome to the admin page</h1>
+<h1 class="admin-welcome">Welcome to the admin page</h1>
 
 <section class="gallery">
     <div th:each="a : ${allAdmins}" th:object="${a}">

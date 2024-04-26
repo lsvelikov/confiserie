@@ -6,9 +6,9 @@
 <body>
 <nav th:replace="~{fragments/navbar}"></nav>
 
-<h1>Welcome to the manager page</h1>
+<h1 class="manager-welcome">Welcome to the manager page</h1>
 
-<h3 th:if="${allManagers.size() == 0}">
+<h3 class="result" th:if="${allManagers.size() == 0}">
     There are no available managers at the moment
 </h3>
 <section class="gallery">

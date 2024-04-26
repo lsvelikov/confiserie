@@ -114,6 +114,11 @@ body > form > section > div:nth-child(10) > button{
     gap: 1.5em;
     justify-content: center;
 }
+
+body > div > div.container.text-light.text-center > h2 {
+    padding-bottom: 30px;
+}
+
 .card-img-top {
     max-width: 100%;
     height: auto;
@@ -169,11 +174,12 @@ body > form > section > div:nth-child(10) > button{
 /*about*/
 
 body > img {
-    padding-left: 380px;
+    justify-content: center;
 }
 
-body > h1 {
+.breuni {
     text-align: center;
+    padding-bottom: 50px;
 }
 
 body > main {
@@ -185,6 +191,9 @@ body > main > div > h2 {
     padding-bottom: 25px;
 }
 
+.my-3 {
+    margin: 0 auto;
+}
 /*contact*/
 
 body > h1.breuninger {
@@ -220,7 +229,8 @@ body > div > form > section {
 
 /*admin*/
 
-body > h1 {
+.admin-welcome {
+    text-align: center;
     padding-top: 80px;
     padding-bottom: 100px;
 }
@@ -262,13 +272,19 @@ body > div:nth-child(9) {
 }
 
 /*managers*/
-
+.manager-welcome {
+    text-align: center;
+    padding: 50px 0;
+}
 body > h3 {
 text-align: center;
 }
 
 /*users*/
 
+.result {
+    text-align: center;
+}
 .text-center {
     padding-bottom: 1.5em;
 }
