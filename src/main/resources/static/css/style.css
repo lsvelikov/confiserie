@@ -195,8 +195,15 @@ body > main > div > h2 {
     margin: 0 auto;
 }
 /*contact*/
+body > img {
+    width: 60vw;
+    height: auto;
+    margin: 0 auto;
+    margin-top: 2em;
+}
 
-body > h1.breuninger {
+.breuninger {
+    text-align: center;
     padding-bottom: 15px;
     padding-top: 15px;
 }
