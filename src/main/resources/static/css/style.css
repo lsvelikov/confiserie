@@ -219,6 +219,10 @@ body > main > h5 {
     padding-bottom: 15px;
 }
 /*assortment*/
+body > div > section.deals > ul > li > a > img {
+    width: 300px;
+    height: auto;
+}
 
 body > div:nth-child(8) {
     text-align: center;
@@ -292,7 +296,10 @@ text-align: center;
 }
 
 /*users*/
-
+body > div > section.deals > ul > li > a > img{
+    width: 260px;
+    height: 260px;
+}
 .result {
     text-align: center;
 }
