@@ -219,6 +219,20 @@ body > main > h5 {
     padding-bottom: 15px;
 }
 /*assortment*/
+.assortment li a img {
+    width: 500px;
+    height: auto;
+    border: 4px solid black;
+    list-style: none outside;
+    padding: 1em 0.5em;
+    background-color: white;
+    display: flex;
+    flex: 0 0 30%;
+    align-items: center;
+    box-shadow:
+            0 0 1em 0 rgb(0, 0, 0, 0.3),
+            0 0 0.4em 0 rgb(0, 0, 0, 0.7) inset;
+}
 body > div > section.deals > ul > li > a > img {
     width: 300px;
     height: auto;
