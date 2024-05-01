@@ -21,7 +21,7 @@
                     <h5 th:text="*{name}" class="card-title">Name</h5>
                     <ul class="list-group list-group-flush">
                         <li th:text="*{description}" class="list-group-item">Description</li>
-                        <li th:text="*{price}" class="list-group-item"><a>Price:</a>Price</li>
+                        <li th:text="*{price}" class="list-group-item">Price</li>
                         <li th:if="${p.getQuantity() <= 10}"
                             th:text="*{quantity}" class="list-group-item">Quantity</li>
                     </ul>

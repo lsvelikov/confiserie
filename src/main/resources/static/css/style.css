@@ -141,11 +141,12 @@ body > div > div.container.text-light.text-center > h2 {
 .card-body a {
     margin-bottom: 0.5em;
 }
-body > div > div.products > div:nth-child(1) > div > div > ul > li:nth-child(1) {
+body > div > div.products > div > div > div > ul > li:nth-child(1) {
     height: 92px;
     overflow: auto;
     align-items: center;
 }
+
 
 /*body > div > section.welcome{*/
 /*    text-align: center;*/
