@@ -96,15 +96,6 @@ body > form > section > div:nth-child(10) > button{
 
 /*add-product*/
 
-/*body > form{*/
-/*    padding-left: 50px;*/
-/*    width: 400px;*/
-/*    text-align: center;*/
-/*}*/
-
-/*body > div {*/
-/*    margin: auto;*/
-/*}*/
 
 /*products*/
 
@@ -146,36 +137,6 @@ body > div > div.products > div > div > div > ul > li:nth-child(1) {
     overflow: auto;
     align-items: center;
 }
-
-
-/*body > div > section.welcome{*/
-/*    text-align: center;*/
-/*    padding-top: 50px;*/
-/*}*/
-
-/*body > div > section.welcome > h1{*/
-/*    padding-bottom: 30px;*/
-/*}*/
-
-/*body > div > section.deals{*/
-/*    text-align: center;*/
-/*    padding-bottom: 25px;*/
-/*}*/
-
-/*body > div > h3 {*/
-/*    text-align: center;*/
-/*    padding-top: 120px;*/
-/*}*/
-/*.row {*/
-/*    width: 1240px;*/
-/*    gap: 1em;*/
-/*    display: flex;*/
-/*    flex-wrap: wrap;*/
-/*}*/
-/*.row.card{*/
-/*    width: 290px;*/
-/*    height: 500px;*/
-/*}*/
 
 /*about*/
 
@@ -315,20 +276,24 @@ body > div:nth-child(9) {
 body > h3 {
 text-align: center;
 }
+.management-result img {
+    width: 580px;
+    height: auto;
+    margin: 30px auto 0;
+}
 
 /*users*/
 body > div > section.deals > ul > li > a > img{
     width: 260px;
     height: 260px;
 }
-.result {
+.users-result {
     text-align: center;
 }
-.result img {
+.users-result img {
     width: 600px;
     height: auto;
-    margin: 0 auto;
-    margin-top: 30px;
+    margin: 30px auto 0;
 }
 .text-center {
     padding-bottom: 1.5em;

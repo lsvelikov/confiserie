@@ -8,8 +8,9 @@
 
 <h1 class="manager-welcome">Welcome to the manager page</h1>
 
-<h3 class="result" th:if="${allManagers.size() == 0}">
+<h3 class="management-result" th:if="${allManagers.size() == 0}">
     There are no available managers at the moment
+    <img src="/images/Management.jpg" alt="pic">
 </h3>
 <section class="gallery">
     <div th:each="m : ${allManagers}" th:object="${m}">
