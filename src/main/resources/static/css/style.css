@@ -204,7 +204,17 @@ body > div > section.deals > ul > li > a > img {
     width: 300px;
     height: auto;
 }
-
+.container-fluid {
+    margin-top: 50px;
+}
+.row {
+    gap: 1em;
+}
+body > div.container-fluid > div:nth-child(2) > div > div > div > ul > li:nth-child(1) {
+    height: 92px;
+    overflow: auto;
+    align-items: center;
+}
 body > div:nth-child(8) {
     text-align: center;
     padding-top: 100px;
