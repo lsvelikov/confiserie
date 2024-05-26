@@ -37,3 +37,10 @@ cloudinary:
   cloud-name: diuhayhix
   api-key: 973864325855613
   api-secret: "${SECRET}"
+
+mail:
+  confiserie: "breuningerconfiserie@breuninger.de"
+  host: localhost
+  port: 1025
+  username: ${MAIL_USER:breuninger}
+  password: ${MAIL_PASSWORD:breuninger}
