@@ -2,31 +2,33 @@ package com.example.confiserie.model.entity;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "users")
 public class User extends BaseEntity {
 
-    @Column(name = "first_name", nullable = false)
+    @Column(nullable = false)
     private String firstName;
-    @Column(name = "last_name", nullable = false)
+    @Column(nullable = false)
     private String lastName;
     @Column(nullable = false)
     private String password;
     @Column(nullable = false, unique = true)
     private String email;
-    @Column(name = "phone_number", nullable = false, unique = true)
+    @Column(nullable = false, unique = true)
     private String phoneNumber;
     @Column(nullable = false)
     private String address;
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "users_roles",
-    joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
-    inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
-    private List<Role> roles;
+        joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+        inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id"))
+    private List<Role> roles = new ArrayList<>();
 
-    @OneToMany(mappedBy = "buyer", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "buyer", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Order> orders;
     public User() {
     }

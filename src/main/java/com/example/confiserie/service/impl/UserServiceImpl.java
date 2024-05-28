@@ -5,11 +5,13 @@ import com.example.confiserie.model.dtos.UserViewDto;
 import com.example.confiserie.model.entity.Role;
 import com.example.confiserie.model.entity.User;
 import com.example.confiserie.model.enums.RoleNameEnum;
+import com.example.confiserie.model.events.UserRegisteredEvent;
 import com.example.confiserie.repository.UserRepository;
 import com.example.confiserie.service.RoleService;
 import com.example.confiserie.service.UserService;
 import com.example.confiserie.exeption.ObjectNotFoundException;
 import org.modelmapper.ModelMapper;
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -24,13 +26,15 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final RoleService roleService;
+    private final ApplicationEventPublisher applicationEventPublisher;
 
     private final ModelMapper mapper;
 
-    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, RoleService roleService, ModelMapper mapper) {
+    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder, RoleService roleService, ApplicationEventPublisher applicationEventPublisher, ModelMapper mapper) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.roleService = roleService;
+        this.applicationEventPublisher = applicationEventPublisher;
         this.mapper = mapper;
     }
 
@@ -42,6 +46,8 @@ public class UserServiceImpl implements UserService {
                 .setRoles(Arrays.asList(roleService.findByName(RoleNameEnum.USER)));
 
         userRepository.save(user);
+
+        applicationEventPublisher.publishEvent(new UserRegisteredEvent("UserService", userRegisterDto.getEmail(), userRegisterDto.getFirstName()));
     }
 
     @Override

@@ -110,6 +110,10 @@ body > div > div.container.text-light.text-center > h2 {
     padding-bottom: 30px;
 }
 
+.available-products {
+    text-align: center;
+}
+
 .card-img-top {
     max-width: 100%;
     height: auto;

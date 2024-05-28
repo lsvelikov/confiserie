@@ -10,7 +10,7 @@
     <div class="container text-light text-center">
         <h2 class="text-center text-dark mt-5">Products</h2>
     </div>
-    <h3 th:if="${products.size() == 0}">
+    <h3 class="available-products" th:if="${products.size() == 0}">
         There are no available products at the moment
     </h3>
     <div class="products">
