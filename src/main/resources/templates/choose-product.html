@@ -1,43 +1,3 @@
-<!--<!DOCTYPE html>-->
-<!--<html lang="en" xmlns="http://www.w3.org/1999/xhtml"-->
-<!--      xmlns:th="http://www.thymeleaf.org">-->
-<!--<head th:replace="~{fragments/head}"></head>-->
-<!--<body>-->
-<!--<div th:replace="~{fragments/navbar}"></div>-->
-
-<!--<div class="container">-->
-
-<!--    <form th:method="post" th:action="@{/products/buy/{id}(id = ${product.id})}" th:object="${product}">-->
-<!--        <section class="form">-->
-<!--            <div>-->
-<!--                <h1 class="text-center mt-2">Desired Product</h1>-->
-<!--            </div>-->
-<!--            <div class="card-body">-->
-<!--                <img th:src="*{imageUrl}" class="card-img-top" alt="pic">-->
-<!--            </div>-->
-<!--            <div class="form-group">-->
-<!--                <label for="name" class="form-label">Name</label>-->
-<!--                <input th:field="*{name}" type="text" id="name" name="name" class="form-control">-->
-<!--            </div>-->
-<!--            <div class="form-group">-->
-<!--                <label for="price" class="form-label">Price</label>-->
-<!--                <input th:field="*{price}" type="text" id="price" name="price" class="form-control">-->
-<!--            </div>-->
-<!--            <div class="form-group">-->
-<!--                <label for="quantity" class="form-label">Quantity</label>-->
-<!--                <input type="text" id="quantity" name="quantity" class="form-control">-->
-<!--            </div>-->
-<!--        </section>-->
-<!--        <div th:method="post" th:action="@{/orders/all}" class="button-holder d-flex justify-content-center">-->
-<!--            <button  type="submit" class="btn btn-success" value="Buy">Buy</button>-->
-<!--        </div>-->
-
-<!--    </form>-->
-<!--</div>-->
-<!--<footer th:replace="~{/fragments/footer}"></footer>-->
-<!--</body>-->
-<!--</html>-->
-
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml"
       xmlns:th="http://www.thymeleaf.org">
@@ -47,7 +7,7 @@
 
 <div class="container">
 
-    <form th:method="post" th:action="@{/products/buy/{id}(id = ${product.id})}" th:object="${product}">
+    <form th:method="post" th:action="@{/products/choose/{id}(id = ${product.id})}" th:object="${product}">
         <section class="form">
             <div>
                 <h1 class="text-center mt-2">Desired Product</h1>
@@ -63,10 +23,10 @@
                 <label for="price" class="form-label">Price</label>
                 <input th:field="*{price}" type="text" id="price" name="price" class="form-control">
             </div>
-            <div class="form-group">
-                <label for="quantity" class="form-label">Quantity</label>
-                <input type="text" id="quantity" name="quantity" class="form-control">
-            </div>
+<!--            <div class="form-group">-->
+<!--                <label for="quantity" class="form-label">Quantity</label>-->
+<!--                <input type="text" id="quantity" name="quantity" class="form-control">-->
+<!--            </div>-->
         </section>
         <div th:method="post" th:action="@{/orders/all}" class="button-holder d-flex justify-content-center">
             <button  type="submit" class="btn btn-success" value="Add">Add to shopping basket</button>

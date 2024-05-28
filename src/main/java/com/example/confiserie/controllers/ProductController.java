@@ -96,7 +96,7 @@ public class ProductController {
 
     }
 
-    @GetMapping("/buy/{id}")
+    @GetMapping("/choose/{id}")
     public String productToBuy(@PathVariable Long id, Model model) {
 
         model.addAttribute("product", productService.findById(id));
@@ -104,7 +104,7 @@ public class ProductController {
         return "choose-product";
     }
 
-    @PostMapping("/buy/{id}")
+    @PostMapping("/choose/{id}")
     public String chosenProduct(@PathVariable Long id,
                                 @ModelAttribute("product") ProductViewDto productViewDto,
                                 @AuthenticationPrincipal UserDetails buyer) {

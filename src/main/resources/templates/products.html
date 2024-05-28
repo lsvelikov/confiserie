@@ -26,7 +26,7 @@
                             th:text="*{quantity}" class="list-group-item">Quantity</li>
                     </ul>
                     <a sec:authorize="hasAnyRole('ADMIN', 'MANAGER')" th:href="@{/products/change-product/{id}(id = ${p.id})}" class="btn btn-success">Update Product</a>
-                    <a th:href="@{/products/buy/{id}(id = ${p.id})}" class="btn btn-outline-success">Choose product</a>
+                    <a th:href="@{/products/choose/{id}(id = ${p.id})}" class="btn btn-outline-success">Choose product</a>
                     <form sec:authorize="hasAnyRole('ADMIN', 'MANAGER')" th:method="delete" th:action="@{/products/delete/{id}(id = ${p.id})}">
                         <input type="submit" class="btn btn-dark" value="Delete">
                     </form>
