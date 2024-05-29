@@ -2,6 +2,7 @@ package com.example.confiserie.model.entity;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,7 +17,7 @@ public class ShoppingBasket extends BaseEntity {
     @ManyToOne
     private User buyer;
 
-    private Double totalSum;
+    private BigDecimal totalSum;
     @OneToMany(mappedBy = "shoppingBasket", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Item> items = new HashSet<>();
 
@@ -41,11 +42,11 @@ public class ShoppingBasket extends BaseEntity {
         return this;
     }
 
-    public Double getTotalSum() {
+    public BigDecimal getTotalSum() {
         return totalSum;
     }
 
-    public ShoppingBasket setTotalSum(Double totalSum) {
+    public ShoppingBasket setTotalSum(BigDecimal totalSum) {
         this.totalSum = totalSum;
         return this;
     }

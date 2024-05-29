@@ -1,11 +1,13 @@
 package com.example.confiserie.model.dtos;
 
+import java.math.BigDecimal;
+
 public class ProductViewDto {
 
     private Long id;
     private String name;
     private String description;
-    private Double price;
+    private BigDecimal price;
     private Integer quantity;
     private String imageUrl;
 
@@ -39,11 +41,11 @@ public class ProductViewDto {
         return this;
     }
 
-    public Double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public ProductViewDto setPrice(Double price) {
+    public ProductViewDto setPrice(BigDecimal price) {
         this.price = price;
         return this;
     }

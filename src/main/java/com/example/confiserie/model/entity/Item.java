@@ -2,16 +2,14 @@ package com.example.confiserie.model.entity;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
+
 @Entity
 @Table(name = "items")
 public class Item extends BaseEntity {
 
-    @Column(nullable = false)
     private String name;
-    @Column(nullable = false)
-    private Double price;
-    @Column(name = "total_price")
-    private Double totalPrice;
+    private BigDecimal totalPrice;
     @Column
     private String imageUrl;
     @Column
@@ -36,20 +34,12 @@ public class Item extends BaseEntity {
         return this;
     }
 
-    public Double getPrice() {
-        return price;
-    }
 
-    public Item setPrice(Double price) {
-        this.price = price;
-        return this;
-    }
-
-    public Double getTotalPrice() {
+    public BigDecimal getTotalPrice() {
         return totalPrice;
     }
 
-    public Item setTotalPrice(Double totalPrice) {
+    public Item setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
         return this;
     }

@@ -2,24 +2,21 @@ package com.example.confiserie.model.dtos;
 
 import com.example.confiserie.model.entity.User;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 public class OrderViewDto {
 
     private Long id;
-    private List<ProductViewDto> products = new ArrayList<>();
+    private List<ShoppingBasketViewDto> basketViewDtoList = new ArrayList<>();
 
-    private Double price;
+    private BigDecimal total;
 
     private User buyer;
 
     public OrderViewDto() {
     }
-
-//    public OrderViewDto(List<ProductViewDto> products) {
-//        this.products = new ArrayList<>();
-//    }
 
     public Long getId() {
         return id;
@@ -30,21 +27,21 @@ public class OrderViewDto {
         return this;
     }
 
-    public List<ProductViewDto> getProducts() {
-        return products;
+    public List<ShoppingBasketViewDto> getBasketViewDtoList() {
+        return basketViewDtoList;
     }
 
-    public OrderViewDto setProducts(List<ProductViewDto> products) {
-        this.products = products;
+    public OrderViewDto setBasketViewDtoList(List<ShoppingBasketViewDto> basketViewDtoList) {
+        this.basketViewDtoList = basketViewDtoList;
         return this;
     }
 
-    public Double getPrice() {
-        return price;
+    public BigDecimal getTotal() {
+        return total;
     }
 
-    public OrderViewDto setPrice(Double price) {
-        this.price = price;
+    public OrderViewDto setTotal(BigDecimal total) {
+        this.total = total;
         return this;
     }
 

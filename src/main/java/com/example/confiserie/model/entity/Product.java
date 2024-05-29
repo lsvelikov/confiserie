@@ -4,6 +4,8 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
 
+import java.math.BigDecimal;
+
 @Entity
 public class Product extends BaseEntity {
 
@@ -12,7 +14,7 @@ public class Product extends BaseEntity {
     @Column(nullable = false, length = 512)
     private String description;
     @Column(nullable = false)
-    private Double price;
+    private BigDecimal price;
     @Column
     private String imageUrl;
     @Column
@@ -41,11 +43,11 @@ public class Product extends BaseEntity {
         return this;
     }
 
-    public Double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public Product setPrice(Double price) {
+    public Product setPrice(BigDecimal price) {
         this.price = price;
         return this;
     }

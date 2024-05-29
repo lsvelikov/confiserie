@@ -7,6 +7,8 @@ import jakarta.validation.constraints.PositiveOrZero;
 import jakarta.validation.constraints.Size;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.math.BigDecimal;
+
 public class ProductServiceModel {
     private Long id;
 
@@ -18,7 +20,7 @@ public class ProductServiceModel {
     private String description;
     @NotNull(message = "Price cannot be empty")
     @Positive(message = "Price must be positive number")
-    private Double price;
+    private BigDecimal price;
     @PositiveOrZero(message = "Quantity must be positive number or null")
     private int quantity;
     @NotNull(message = "Select category")
@@ -59,11 +61,11 @@ public class ProductServiceModel {
         return this;
     }
 
-    public Double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public ProductServiceModel setPrice(Double price) {
+    public ProductServiceModel setPrice(BigDecimal price) {
         this.price = price;
         return this;
     }

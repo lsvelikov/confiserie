@@ -2,6 +2,7 @@ package com.example.confiserie.model.entity;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,7 +10,7 @@ import java.util.List;
 @Table(name = "orders")
 public class Order extends BaseEntity {
     @Column
-    private Double totalPrice;
+    private BigDecimal totalPrice;
     @ManyToOne
     private OrderPaymentMethod paymentMethod;
     private boolean isPlaced;
@@ -21,11 +22,11 @@ public class Order extends BaseEntity {
     public Order() {
     }
 
-    public Double getTotalPrice() {
+    public BigDecimal getTotalPrice() {
         return totalPrice;
     }
 
-    public Order setTotalPrice(Double totalPrice) {
+    public Order setTotalPrice(BigDecimal totalPrice) {
         this.totalPrice = totalPrice;
         return this;
     }

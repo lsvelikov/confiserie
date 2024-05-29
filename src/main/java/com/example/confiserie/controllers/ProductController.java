@@ -114,7 +114,7 @@ public class ProductController {
 
         this.shoppingBasketService.buy(id, buyer, productViewDto);
 
-        return "redirect:/orders/all";
+        return "redirect:/user/orders";
     }
 
     @ModelAttribute
