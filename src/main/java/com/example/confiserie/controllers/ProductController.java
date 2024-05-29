@@ -6,6 +6,7 @@ import com.example.confiserie.model.serviceModel.ProductServiceModel;
 import com.example.confiserie.service.ItemService;
 import com.example.confiserie.service.OrderService;
 import com.example.confiserie.service.ProductService;
+import com.example.confiserie.service.ShoppingBasketService;
 import jakarta.validation.Valid;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -28,12 +29,14 @@ public class ProductController {
     private final OrderService orderService;
     private final ItemService itemService;
     private final ModelMapper mapper;
+    private final ShoppingBasketService shoppingBasketService;
 
-    public ProductController(ProductService productService, OrderService orderService, ItemService itemService, ModelMapper mapper) {
+    public ProductController(ProductService productService, OrderService orderService, ItemService itemService, ModelMapper mapper, ShoppingBasketService shoppingBasketService) {
         this.productService = productService;
         this.orderService = orderService;
         this.itemService = itemService;
         this.mapper = mapper;
+        this.shoppingBasketService = shoppingBasketService;
     }
 
     @GetMapping("/add")
@@ -96,7 +99,7 @@ public class ProductController {
 
     }
 
-    @GetMapping("/choose/{id}")
+    @GetMapping("/buy/{id}")
     public String productToBuy(@PathVariable Long id, Model model) {
 
         model.addAttribute("product", productService.findById(id));
@@ -104,11 +107,12 @@ public class ProductController {
         return "choose-product";
     }
 
-    @PostMapping("/choose/{id}")
-    public String chosenProduct(@PathVariable Long id,
+    @PostMapping("/buy/{id}")
+    public String buyProduct(@PathVariable Long id,
                                 @ModelAttribute("product") ProductViewDto productViewDto,
                                 @AuthenticationPrincipal UserDetails buyer) {
 
+        this.shoppingBasketService.buy(id, buyer, productViewDto);
 
         return "redirect:/orders/all";
     }

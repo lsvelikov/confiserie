@@ -7,7 +7,7 @@
 
 <div class="container">
 
-    <form th:method="post" th:action="@{/products/choose/{id}(id = ${product.id})}" th:object="${product}">
+    <form th:method="post" th:action="@{/products/buy/{id}(id = ${product.id})}" th:object="${product}">
         <section class="form">
             <div>
                 <h1 class="text-center mt-2">Desired Product</h1>
