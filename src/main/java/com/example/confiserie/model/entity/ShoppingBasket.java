@@ -12,9 +12,10 @@ public class ShoppingBasket extends BaseEntity {
     @ManyToOne
     @JoinColumn(name = "order_id", referencedColumnName = "id")
     private Order order;
+
     @ManyToOne
     private User buyer;
-    @Column(name = "total_sum")
+
     private Double totalSum;
     @OneToMany(mappedBy = "shoppingBasket", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private Set<Item> items = new HashSet<>();

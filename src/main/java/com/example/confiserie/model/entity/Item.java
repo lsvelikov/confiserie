@@ -8,8 +8,6 @@ public class Item extends BaseEntity {
 
     @Column(nullable = false)
     private String name;
-    @Column(nullable = false, length = 512)
-    private String description;
     @Column(nullable = false)
     private Double price;
     @Column(name = "total_price")
@@ -18,30 +16,23 @@ public class Item extends BaseEntity {
     private String imageUrl;
     @Column
     private Integer quantity;
-    @ManyToOne
-    private Category category;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id", referencedColumnName = "id")
+    private Product product;
+
     @ManyToOne
     @JoinColumn(name = "shopping_basket_id", referencedColumnName = "id")
     private ShoppingBasket shoppingBasket;
 
     public Item() {
     }
-
     public String getName() {
         return name;
     }
 
     public Item setName(String name) {
         this.name = name;
-        return this;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public Item setDescription(String description) {
-        this.description = description;
         return this;
     }
 
@@ -81,14 +72,6 @@ public class Item extends BaseEntity {
         return this;
     }
 
-    public Category getCategory() {
-        return category;
-    }
-
-    public Item setCategory(Category category) {
-        this.category = category;
-        return this;
-    }
 
     public ShoppingBasket getShoppingBasket() {
         return shoppingBasket;
@@ -96,6 +79,15 @@ public class Item extends BaseEntity {
 
     public Item setShoppingBasket(ShoppingBasket shoppingBasket) {
         this.shoppingBasket = shoppingBasket;
+        return this;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public Item setProduct(Product product) {
+        this.product = product;
         return this;
     }
 }
