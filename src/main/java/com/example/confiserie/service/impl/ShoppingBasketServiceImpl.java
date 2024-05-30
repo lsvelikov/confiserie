@@ -80,14 +80,24 @@ public class ShoppingBasketServiceImpl implements ShoppingBasketService {
             item = new Item();
             item.setProduct(product);
             item.setName(product.getName());
-            item.setQuantity(quantity);
-            BigDecimal totalPrice = product.getPrice().multiply(BigDecimal.valueOf(quantity));
-            item.setTotalPrice(totalPrice);
-            item.setShoppingBasket(shoppingBasket);
+            if (product.getQuantity() >= quantity) {
+                item.setQuantity(quantity);
+                product.setQuantity(product.getQuantity() - quantity);
+                BigDecimal totalPrice = product.getPrice().multiply(BigDecimal.valueOf(quantity));
+                item.setTotalPrice(totalPrice);
+                item.setShoppingBasket(shoppingBasket);
+            } else {
+                throw new IllegalArgumentException("There not enough pieces for this order!");
+            }
         } else {
-            item.setTotalPrice(item.getTotalPrice().add(product.getPrice().multiply(BigDecimal.valueOf(quantity))));
-            Integer totalQuantity = item.getQuantity() + quantity;
-            item.setQuantity(totalQuantity);
+            if (product.getQuantity() >= quantity) {
+                product.setQuantity(product.getQuantity() - quantity);
+                item.setTotalPrice(item.getTotalPrice().add(product.getPrice().multiply(BigDecimal.valueOf(quantity))));
+                Integer totalQuantity = item.getQuantity() + quantity;
+                item.setQuantity(totalQuantity);
+            } else {
+                throw new IllegalArgumentException("There not enough pieces for this order!");
+            }
         }
 
         itemService.save(item);
