@@ -20,6 +20,6 @@ public class OrdersController {
     public String allOrders(Model model) {
 
 
-        return "orders";
+        return "shopping-basket";
     }
 }

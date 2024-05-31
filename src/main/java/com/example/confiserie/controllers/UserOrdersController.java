@@ -28,7 +28,7 @@ public class UserOrdersController {
         List<OrderViewDto> allOpenOrders = orderService.findAllOpenOrdersByUser(currentUser);
         model.addAttribute("allOpenOrders", allOpenOrders);
 
-        return "orders";
+        return "shopping-basket";
     }
 
 }
