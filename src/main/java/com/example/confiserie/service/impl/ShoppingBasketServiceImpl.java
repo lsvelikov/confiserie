@@ -86,8 +86,6 @@ public class ShoppingBasketServiceImpl implements ShoppingBasketService {
                 BigDecimal totalPrice = product.getPrice().multiply(BigDecimal.valueOf(quantity));
                 item.setTotalPrice(totalPrice);
                 item.setShoppingBasket(shoppingBasket);
-            } else {
-                throw new IllegalArgumentException("There not enough pieces for this order!");
             }
         } else {
             if (product.getQuantity() >= quantity) {
@@ -95,8 +93,6 @@ public class ShoppingBasketServiceImpl implements ShoppingBasketService {
                 item.setTotalPrice(item.getTotalPrice().add(product.getPrice().multiply(BigDecimal.valueOf(quantity))));
                 Integer totalQuantity = item.getQuantity() + quantity;
                 item.setQuantity(totalQuantity);
-            } else {
-                throw new IllegalArgumentException("There not enough pieces for this order!");
             }
         }
 

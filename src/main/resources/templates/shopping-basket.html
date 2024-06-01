@@ -15,7 +15,7 @@
         <div th:each="basket : ${o.getBasketViewDtoList()}" th:object="${basket}">
             <div th:each="itemList : ${basket}" th:object="${itemList}">
                 <div th:each="item : ${basket.getItemsList()}" th:object="${item}">
-                    <span class="p-3" th:text="${item.imageUrl}">Name</span>
+<!--                    <span class="p-3" th:text="${item.imageUrl}">Name</span>-->
                     <span class="p-3" th:text="${item.name}">Name</span>
                     <span class="p-3" th:text="${item.quantity}">Amount</span>
                     <span class="p-3" th:text="${item.getTotalPrice()}">Price</span>
