@@ -339,3 +339,16 @@ body > div.container-fluid > div > div > div > div > ul > li:nth-child(1) {
     align-items: center;
 }
 
+/*shopping basket*/
+body > div > div.mt-3.rounded.badge-info.p-3 > div {
+    display: block;
+    text-align: center;
+}
+
+body > div > div.mt-3.rounded.badge-info.p-3 > div > div {
+    text-align: center;
+}
+
+.btn.btn-link {
+    color: #cbd90e;
+}

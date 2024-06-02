@@ -15,7 +15,8 @@
         <div th:each="basket : ${o.getBasketViewDtoList()}" th:object="${basket}">
             <div th:each="itemList : ${basket}" th:object="${itemList}">
                 <div th:each="item : ${basket.getItemsList()}" th:object="${item}">
-<!--                    <span class="p-3" th:text="${item.imageUrl}">Name</span>-->
+
+                    <span class="p-3" th:text="${item.imageUrl}">Name</span>
                     <span class="p-3" th:text="${item.name}">Name</span>
                     <span class="p-3" th:text="${item.quantity}">Amount</span>
                     <span class="p-3" th:text="${item.getTotalPrice()}">Price</span>
@@ -26,9 +27,11 @@
                                 </span>
                 </div>
             </div>
+            <div>
+                <h3 th:text="|Total sum: ${o.getTotal()}|" class="bg-gray text-dark  mb-0 mt-2">Total sum</h3>
+                <a class="ml-3 p-3 text-warning" th:href="@{/orders/place-order/{id}(id = *{id})}">Place Order</a>
+            </div>
         </div>
-        <h3 th:text="|Total sum: ${o.getTotal()}|" class="bg-gray text-dark  mb-0 mt-2">Total sum</h3>
-        <a class="ml-3 p-3 text-warning" th:href="@{/orders/place-order/{id}(id = *{id})}">Place Order</a>
     </div>
 <!--    <div th:each="o : ${allOpenOrders}" th:object="${o}" class="row mx-auto d-flex flex-row justify-content-center">-->
 <!--        <div>-->
