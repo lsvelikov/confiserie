@@ -11,52 +11,85 @@
         <h2 class="text-center text-dark mt-5">Shopping Basket</h2>
     </div>
 
-    <div th:each="o : ${allOpenOrders}" th:object="${o}" class="mt-3 rounded badge-info p-3">
-        <div th:each="basket : ${o.getBasketViewDtoList()}" th:object="${basket}">
-            <div th:each="itemList : ${basket}" th:object="${itemList}">
-                <div th:each="item : ${basket.getItemsList()}" th:object="${item}">
-
-                    <span class="p-3" th:text="${item.imageUrl}">Name</span>
-                    <span class="p-3" th:text="${item.name}">Name</span>
-                    <span class="p-3" th:text="${item.quantity}">Amount</span>
-                    <span class="p-3" th:text="${item.getTotalPrice()}">Price</span>
-                    <span class="ml-3 p-3 text-warning">
+    <div class="container-fluid bg-blur rounded mt-1 mb-4 d-flex justify-content-center" id="big-div">
+        <div class="col-5">
+            <h1 class="bg-gray text-dark  mb-0 mt-2"><strong class="bg-blur rounded">All open</strong></h1>
+            <div class="bg-light rounded m-auto" style="overflow: auto">
+                <div th:each="o : ${allOpenOrders}" th:object="${o}" class="mt-3 rounded badge-info p-3">
+                    <div th:each="basket : ${o.getBasketViewDtoList()}" th:object="${basket}">
+                        <div th:each="itemList : ${basket}" th:object="${itemList}">
+                            <div th:each="item : ${basket.getItemList()}" th:object="${item}">
+                                <span class="p-3" th:text="${item.name}">Name</span>
+                                <span class="p-3" th:text="${item.quantity}">Quantity</span>
+                                <span class="p-3" th:text="${item.getTotalPrice()}">Price</span>
+                                <span class="ml-3 p-3 text-warning">
                                 <form th:method="delete" th:object="${item}" th:action="@{/orders/delete/{id}(id = ${item.id})}">
                                     <input type="submit" class="btn btn-link" value="Delete">
                                 </form>
                                 </span>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 th:text="|Total sum: ${o.getTotal()}|" class="bg-gray text-dark  mb-0 mt-2">Total sum</h3>
+                    <a class="ml-3 p-3 text-warning" th:href="@{/orders/place-order/{id}(id = *{id})}">Place Order</a>
                 </div>
             </div>
-            <div>
-                <h3 th:text="|Total sum: ${o.getTotal()}|" class="bg-gray text-dark  mb-0 mt-2">Total sum</h3>
-                <a class="ml-3 p-3 text-warning" th:href="@{/orders/place-order/{id}(id = *{id})}">Place Order</a>
+        </div>
+
+        <div class="col-5">
+            <h1 class="bg-gray text-dark  mb-0 mt-2"><strong class="bg-blur rounded">Placed Orders</strong></h1>
+            <div class="bg-light rounded m-auto" style="overflow: auto">
+                <div th:each="placedOrder : ${allPlacedOrders}" th:object="${placedOrder}" class="mt-3 rounded badge-info p-3">
+                    <div th:each="placedBasket : ${placedOrder.getBasketViewDtoList()}" th:object="${placedBasket}">
+                        <div th:each="placedItemList : ${placedBasket}" th:object="${placedItemList}">
+                            <div th:each="placedItem : ${placedBasket.getItemList()}" th:object="${placedItem}">
+                                <span class="p-3" th:text="${placedItem.getName()}">Name</span>
+                                <span class="p-3" th:text="${placedItem.totalPrice}">Price</span>
+                            </div>
+                        </div>
+                    </div>
+                    <h3 th:text="|Total sum: ${placedOrder.getTotal()}|" class="bg-gray text-dark  mb-0 mt-2">Total sum</h3>
+                </div>
             </div>
         </div>
     </div>
-<!--    <div th:each="o : ${allOpenOrders}" th:object="${o}" class="row mx-auto d-flex flex-row justify-content-center">-->
-<!--        <div>-->
-<!--            <div class="card" style="width: 18rem;">-->
-<!--                <div class="card-body">-->
-<!--                    <img th:src="*{}" class="card-img-top" alt="pic">-->
-<!--                </div>-->
-<!--                <div class="card-body">-->
-<!--                    <h5 th:text="*{name}" class="card-title">Name</h5>-->
-<!--                </div>-->
-<!--                <div class="card-body">-->
-<!--                    <h5 th:text="*{quantity}" class="card-title">Quantity</h5>-->
-<!--                </div>-->
 
+<!--    <div th:each="o : ${allOpenOrders}" th:object="${o}" class="mt-3 rounded badge-info p-3">-->
+<!--        <div th:each="basket : ${o.getBasketViewDtoList()}" th:object="${basket}">-->
+<!--            <div th:each="itemList : ${basket}" th:object="${itemList}">-->
+<!--                <div th:each="item : ${basket.getItemsList()}" th:object="${item}">-->
 
-<!--                <ul class="list-group list-group-flush">-->
-<!--                    &lt;!&ndash;                    <li th:text="*{description}" class="list-group-item">Description</li>&ndash;&gt;-->
-<!--                    <li th:text="*{price}" class="list-group-item"><a>Price:</a>Price</li>-->
-<!--&lt;!&ndash;                    <li th:text="${order.getBuyer().firstName}" class="list-group-item">Quantity</li>&ndash;&gt;-->
-<!--                </ul>-->
-<!--                &lt;!&ndash;                <a sec:authorize="hasAnyRole('ADMIN', 'MANAGER')" th:href="@{/products/change-product/{id}(id = ${p.id})}" class="btn btn-success">Update Product</a>&ndash;&gt;-->
-<!--                &lt;!&ndash;                <a th:href="@{/products/buy/{id}(id = ${p.id})}" class="btn btn-outline-success">Choose product</a>&ndash;&gt;-->
-<!--                &lt;!&ndash;                <form sec:authorize="hasAnyRole('ADMIN', 'MANAGER')" th:method="delete" th:action="@{/products/delete/{id}(id = ${p.id})}">&ndash;&gt;-->
-<!--                &lt;!&ndash;                    <input type="submit" class="btn btn-dark" value="Delete">&ndash;&gt;-->
-<!--                </form>-->
+<!--&lt;!&ndash;                    <span class="p-3" th:text="${item.imageUrl}">Name</span>&ndash;&gt;-->
+<!--                    <span class="p-3" th:text="${item.name}">Name</span>-->
+<!--                    <span class="p-3" th:text="${item.quantity}">Amount</span>-->
+<!--                    <span class="p-3" th:text="${item.getTotalPrice()}">Price</span>-->
+<!--                    <span class="ml-3 p-3 text-warning">-->
+<!--                    <form th:method="delete" th:object="${item}" th:action="@{/orders/delete/{id}(id = ${item.id})}">-->
+<!--                        <input type="submit" class="btn btn-link" value="Delete">-->
+<!--                    </form>-->
+<!--                    </span>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div>-->
+<!--                <h3 th:text="|Total sum: ${o.getTotal()}|" class="bg-gray text-dark  mb-0 mt-2">Total sum</h3>-->
+<!--                <a class="ml-3 p-3 text-warning" th:href="@{/orders/place-order/{id}(id = *{id})}">Place Order</a>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <div class="col-5">-->
+<!--        <h1 class="bg-gray text-dark  mb-0 mt-2"><strong class="bg-blur rounded">Placed Orders</strong></h1>-->
+<!--        <div class="bg-light rounded m-auto" style="overflow: auto">-->
+<!--            <div th:each="placedOrder : ${allPlacedOrders}" th:object="${placedOrder}" class="mt-3 rounded badge-info p-3">-->
+<!--                <div th:each="placedBasket : ${placedOrder.getBasketViewDtoList()}" th:object="${placedBasket}">-->
+<!--                    <div th:each="placedItemList : ${placedBasket}" th:object="${placedItemList}">-->
+<!--                        <div th:each="placedItem : ${placedBasket.getItemList()}" th:object="${placedItem}">-->
+<!--                            <span class="p-3" th:text="${placedItem.getName()}">Name</span>-->
+<!--                            <span class="p-3" th:text="${placedItem.totalPrice}">Price</span>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--                <h3 th:text="|Total sum: ${placedOrder.getTotal()}|" class="bg-gray text-dark  mb-0 mt-2">Total sum</h3>-->
 <!--            </div>-->
 <!--        </div>-->
 <!--    </div>-->

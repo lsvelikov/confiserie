@@ -10,4 +10,8 @@ public interface ItemService {
     void save(Item item);
 
     Item findByProductAndShoppingBasket(Long product_id, Long shoppingBasket_id);
+
+//    Optional<Item> findById(Long id);
+
+//    void delete(Item item);
 }

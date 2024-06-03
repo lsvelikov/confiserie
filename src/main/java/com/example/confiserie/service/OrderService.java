@@ -16,4 +16,12 @@ public interface OrderService {
 
 
     List<OrderViewDto> findAllOpenOrdersByUser(UserDetails currentUser);
+
+    List<OrderViewDto> findAllPlacedOrdersByUser(UserDetails currentUser);
+
+    void delete(Long id, UserDetails buyer);
+
+    void placeOrder(Long id, UserDetails buyer);
+
+    Order findByBuyer(Long id);
 }

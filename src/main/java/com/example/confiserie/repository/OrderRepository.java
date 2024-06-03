@@ -21,4 +21,7 @@ public interface OrderRepository extends JpaRepository<Order, Long> {
     @Query("SELECT o FROM Order o " +
             "WHERE o.buyer.id = :id AND o.isPlaced = false")
     List<Order> findAllOpenOrdersByUser(Long id);
+    @Query("SELECT o FROM Order o " +
+           "WHERE o.buyer.id = :id AND o.isPlaced = true")
+    List<Order> findAllPlacedOrdersByUser(Long id);
 }

@@ -10,7 +10,7 @@ public class ShoppingBasketViewDto {
 
     private BigDecimal totalSum;
 
-    private List<ItemViewDto> itemsList = new ArrayList<>();
+    private List<ItemViewDto> itemList = new ArrayList<>();
 
     public ShoppingBasketViewDto() {
     }
@@ -33,12 +33,12 @@ public class ShoppingBasketViewDto {
         return this;
     }
 
-    public List<ItemViewDto> getItemsList() {
-        return itemsList;
+    public List<ItemViewDto> getItemList() {
+        return itemList;
     }
 
-    public ShoppingBasketViewDto setItemsList(List<ItemViewDto> itemsList) {
-        this.itemsList = itemsList;
+    public ShoppingBasketViewDto setItemList(List<ItemViewDto> itemList) {
+        this.itemList = itemList;
         return this;
     }
 }

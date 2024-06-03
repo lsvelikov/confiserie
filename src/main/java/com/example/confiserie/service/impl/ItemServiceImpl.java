@@ -43,4 +43,14 @@ public class ItemServiceImpl implements ItemService {
         return itemRepository.findItemByProduct_IdAndShoppingBasket_Id(product_id, shoppingBasket_id)
                 .orElse(null);
     }
+
+//    @Override
+//    public Optional<Item> findById(Long id) {
+//        return itemRepository.findById(id);
+//    }
+
+//    @Override
+//    public void delete(Item item) {
+//        itemRepository.delete(item);
+//    }
 }

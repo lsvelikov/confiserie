@@ -3,21 +3,23 @@ package com.example.confiserie.model.entity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
 
 import java.math.BigDecimal;
 
 @Entity
+@Table(name = "products")
 public class Product extends BaseEntity {
 
-    @Column(nullable = false)
+    @Column(nullable = false, unique = true)
     private String name;
     @Column(nullable = false, length = 512)
     private String description;
-    @Column(nullable = false)
+//    @Column(nullable = false)
     private BigDecimal price;
-    @Column
+
     private String imageUrl;
-    @Column
+
     private Integer quantity;
     @ManyToOne
     private Category category;

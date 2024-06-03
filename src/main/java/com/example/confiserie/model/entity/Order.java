@@ -9,14 +9,14 @@ import java.util.List;
 @Entity
 @Table(name = "orders")
 public class Order extends BaseEntity {
-    @Column
+
     private BigDecimal totalPrice;
     @ManyToOne
     private OrderPaymentMethod paymentMethod;
     private boolean isPlaced;
     @ManyToOne
     private User buyer;
-    @OneToMany(mappedBy = "order", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "order")
     private List<ShoppingBasket> shoppingBaskets = new ArrayList<>();
 
     public Order() {

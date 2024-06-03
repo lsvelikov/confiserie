@@ -80,16 +80,17 @@ public class ShoppingBasketServiceImpl implements ShoppingBasketService {
             item = new Item();
             item.setProduct(product);
             item.setName(product.getName());
-            if (product.getQuantity() >= quantity) {
+            item.setQuantity(0);
+            if (product.getQuantity() >= quantity + item.getQuantity()) {
                 item.setQuantity(quantity);
-                product.setQuantity(product.getQuantity() - quantity);
+//                product.setQuantity(product.getQuantity() - quantity);
                 BigDecimal totalPrice = product.getPrice().multiply(BigDecimal.valueOf(quantity));
                 item.setTotalPrice(totalPrice);
                 item.setShoppingBasket(shoppingBasket);
             }
         } else {
-            if (product.getQuantity() >= quantity) {
-                product.setQuantity(product.getQuantity() - quantity);
+            if (product.getQuantity() >= quantity + item.getQuantity()) {
+//                product.setQuantity(product.getQuantity() - quantity);
                 item.setTotalPrice(item.getTotalPrice().add(product.getPrice().multiply(BigDecimal.valueOf(quantity))));
                 Integer totalQuantity = item.getQuantity() + quantity;
                 item.setQuantity(totalQuantity);
@@ -126,4 +127,10 @@ public class ShoppingBasketServiceImpl implements ShoppingBasketService {
 
         orderService.save(order);
     }
+
+//    @Override
+//    public ShoppingBasket findByOrder(Long id) {
+//        return shoppingBasketRepository.findByOrder(id)
+//                .orElse(null);
+//    }
 }

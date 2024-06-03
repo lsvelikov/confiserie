@@ -15,12 +15,12 @@ public class Item extends BaseEntity {
     @Column
     private Integer quantity;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne
     @JoinColumn(name = "product_id", referencedColumnName = "id")
     private Product product;
 
     @ManyToOne
-    @JoinColumn(name = "shopping_basket_id", referencedColumnName = "id")
+//    @JoinColumn(name = "shopping_basket_id", referencedColumnName = "id")
     private ShoppingBasket shoppingBasket;
 
     public Item() {

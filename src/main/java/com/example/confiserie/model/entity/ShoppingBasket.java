@@ -7,18 +7,18 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "shopping_basket")
+@Table
 public class ShoppingBasket extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "order_id", referencedColumnName = "id")
     private Order order;
-
     @ManyToOne
     private User buyer;
 
+
     private BigDecimal totalSum;
-    @OneToMany(mappedBy = "shoppingBasket", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "shoppingBasket")
     private Set<Item> items = new HashSet<>();
 
     public ShoppingBasket() {
