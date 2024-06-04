@@ -21,8 +21,9 @@
                     <h5 th:text="*{name}" class="card-title">Name</h5>
                     <ul class="list-group list-group-flush">
                         <li th:text="*{description}" class="list-group-item">Description</li>
-                        <li th:text="*{price}" class="list-group-item">Price</li>
-                        <li th:text="*{quantity}" class="list-group-item">Quantity</li>
+                        <li th:text="'Price: ' + *{price}" class="list-group-item">Price</li>
+                        <li th:if="(*{quantity} != 0)" th:text="*{quantity}" class="list-group-item">Quantity</li>
+                        <li th:unless="(*{quantity} != 0)" th:text="'Not available'" class="list-group-item">Quantity</li>
                     </ul>
                     <a sec:authorize="hasAnyRole('ADMIN', 'MANAGER')" th:href="@{/products/change-product/{id}(id = ${p.id})}" class="btn btn-success">Update Product</a>
                     <a th:href="@{/products/buy/{id}(id = ${p.id})}" class="btn btn-outline-success">Choose product</a>
