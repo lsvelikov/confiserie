@@ -83,14 +83,14 @@ public class ShoppingBasketServiceImpl implements ShoppingBasketService {
             item.setQuantity(0);
             if (product.getQuantity() >= quantity + item.getQuantity()) {
                 item.setQuantity(quantity);
-//                product.setQuantity(product.getQuantity() - quantity);
+//                productViewDto.setQuantity(product.getQuantity() - item.getQuantity());
                 BigDecimal totalPrice = product.getPrice().multiply(BigDecimal.valueOf(quantity));
                 item.setTotalPrice(totalPrice);
                 item.setShoppingBasket(shoppingBasket);
             }
         } else {
             if (product.getQuantity() >= quantity + item.getQuantity()) {
-//                product.setQuantity(product.getQuantity() - quantity);
+//                productViewDto.setQuantity(product.getQuantity() - item.getQuantity());
                 item.setTotalPrice(item.getTotalPrice().add(product.getPrice().multiply(BigDecimal.valueOf(quantity))));
                 Integer totalQuantity = item.getQuantity() + quantity;
                 item.setQuantity(totalQuantity);
