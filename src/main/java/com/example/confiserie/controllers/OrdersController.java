@@ -19,12 +19,6 @@ public class OrdersController {
         this.orderService = orderService;
     }
 
-//    @GetMapping("/all")
-//    public String allOrders(Model model) {
-//
-//
-//        return "shopping-basket";
-//    }
 
     @DeleteMapping("/delete/{id}")
     public String delete(@PathVariable Long id,

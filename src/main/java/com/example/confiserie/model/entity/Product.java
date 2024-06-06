@@ -15,7 +15,6 @@ public class Product extends BaseEntity {
     private String name;
     @Column(nullable = false, length = 512)
     private String description;
-//    @Column(nullable = false)
     private BigDecimal price;
 
     private String imageUrl;

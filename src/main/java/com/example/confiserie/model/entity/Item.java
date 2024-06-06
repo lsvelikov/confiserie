@@ -20,7 +20,6 @@ public class Item extends BaseEntity {
     private Product product;
 
     @ManyToOne
-//    @JoinColumn(name = "shopping_basket_id", referencedColumnName = "id")
     private ShoppingBasket shoppingBasket;
 
     public Item() {
