@@ -54,8 +54,6 @@ public class UserServiceImpl implements UserService {
     public void initUser() {
 
         Role adminRole = roleService.findByName(RoleNameEnum.ADMIN);
-//        Role managerRole = roleService.findByName(RoleNameEnum.MANAGER);
-//        Role userRole = roleService.findByName(RoleNameEnum.USER);
 
         if (userRepository.count() == 0) {
 
