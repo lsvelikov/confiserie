@@ -5,10 +5,10 @@ import com.example.confiserie.model.dtos.ItemViewDto;
 import com.example.confiserie.model.dtos.OrderViewDto;
 import com.example.confiserie.model.dtos.ShoppingBasketViewDto;
 import com.example.confiserie.model.entity.*;
-import com.example.confiserie.repository.ItemRepository;
 import com.example.confiserie.repository.OrderRepository;
 import com.example.confiserie.repository.ProductRepository;
 import com.example.confiserie.repository.ShoppingBasketRepository;
+import com.example.confiserie.service.ItemService;
 import com.example.confiserie.service.OrderService;
 import com.example.confiserie.service.UserService;
 import jakarta.transaction.Transactional;
@@ -28,16 +28,16 @@ public class OrderServiceImpl implements OrderService {
     private final ModelMapper mapper;
     private final UserService userService;
 
-    private final ItemRepository itemRepository;
+    private final ItemService itemService;
 
     private final ShoppingBasketRepository shoppingBasketRepository;
     private final ProductRepository productRepository;
 
-    public OrderServiceImpl(OrderRepository orderRepository, ModelMapper mapper, UserService userService, ItemRepository itemRepository, ShoppingBasketRepository shoppingBasketRepository, ProductRepository productRepository) {
+    public OrderServiceImpl(OrderRepository orderRepository, ModelMapper mapper, UserService userService, ItemService itemService, ShoppingBasketRepository shoppingBasketRepository, ProductRepository productRepository) {
         this.orderRepository = orderRepository;
         this.mapper = mapper;
         this.userService = userService;
-        this.itemRepository = itemRepository;
+        this.itemService = itemService;
         this.shoppingBasketRepository = shoppingBasketRepository;
         this.productRepository = productRepository;
     }
@@ -143,7 +143,7 @@ public class OrderServiceImpl implements OrderService {
     public void delete(Long id, UserDetails buyer) {
         User userBuyer = userService.findByEmail(buyer.getUsername());
         Order order = orderRepository.findByBuyer(userBuyer.getId());
-        Item toDelete = itemRepository.findById(id)
+        Item toDelete = itemService.findById(id)
                 .orElseThrow(() -> new ObjectNotFoundException("Product not found"));
 
         if (order != null && !order.isPlaced()) {
@@ -152,7 +152,7 @@ public class OrderServiceImpl implements OrderService {
 
             assert shoppingBasket != null;
             shoppingBasket.getItems().remove(toDelete);
-            itemRepository.delete(toDelete);
+            itemService.delete(toDelete);
             BigDecimal totalSum = shoppingBasket
                     .getItems()
                     .stream()
