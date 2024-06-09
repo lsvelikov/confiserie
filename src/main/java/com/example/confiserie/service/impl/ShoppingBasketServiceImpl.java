@@ -1,14 +1,9 @@
 package com.example.confiserie.service.impl;
 
-import com.example.confiserie.exeption.ObjectNotFoundException;
 import com.example.confiserie.model.dtos.ProductViewDto;
 import com.example.confiserie.model.entity.*;
-import com.example.confiserie.repository.ProductRepository;
 import com.example.confiserie.repository.ShoppingBasketRepository;
-import com.example.confiserie.service.ItemService;
-import com.example.confiserie.service.OrderService;
-import com.example.confiserie.service.ShoppingBasketService;
-import com.example.confiserie.service.UserService;
+import com.example.confiserie.service.*;
 import jakarta.transaction.Transactional;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
@@ -21,15 +16,15 @@ import java.util.Set;
 public class ShoppingBasketServiceImpl implements ShoppingBasketService {
 
     private final ShoppingBasketRepository shoppingBasketRepository;
-    private final ProductRepository productRepository;
+    private final ProductService productService;
     private final UserService userService;
     private final OrderService orderService;
 
     private final ItemService itemService;
 
-    public ShoppingBasketServiceImpl(ShoppingBasketRepository shoppingBasketRepository, ProductRepository productRepository, UserService userService, OrderService orderService, ItemService itemService) {
+    public ShoppingBasketServiceImpl(ShoppingBasketRepository shoppingBasketRepository, ProductService productService, UserService userService, OrderService orderService, ItemService itemService) {
         this.shoppingBasketRepository = shoppingBasketRepository;
-        this.productRepository = productRepository;
+        this.productService = productService;
         this.userService = userService;
         this.orderService = orderService;
         this.itemService = itemService;
@@ -43,8 +38,7 @@ public class ShoppingBasketServiceImpl implements ShoppingBasketService {
     @Override
     @Transactional
     public void buy(Long id, UserDetails buyer, ProductViewDto productViewDto) {
-        Product product = productRepository.findById(id)
-                .orElseThrow(() -> new ObjectNotFoundException("Product not available"));
+        Product product = productService.findProduct(id);
 
         User userBuyer = userService.findByEmail(buyer.getUsername());
 
