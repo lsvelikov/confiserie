@@ -10,4 +10,5 @@ public interface ShoppingBasketService {
 
     void buy(Long id, UserDetails buyer, ProductViewDto productViewDto);
 
+
 }
