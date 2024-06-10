@@ -344,3 +344,31 @@ body > div.container-fluid > div > div > div > div > ul > li:nth-child(1) {
 #big-div > div:nth-child(1) > div > div > div > div > div > span.ml-3.p-3.text-warning > form > input.btn.btn-link {
     color: #eed606;
 }
+
+/*error*/
+.error{
+    display: block;
+    text-align: center;
+}
+
+.error p:first-of-type{
+    padding: 50px 0;
+}
+
+.error p:last-of-type {
+    padding-bottom: 50px;
+}
+
+.error p a {
+    text-decoration: none;
+}
+
+.error p a:hover {
+    color: #7abaff;
+}
+
+.error img {
+    display: inline;
+    width: 800px;
+    height: auto;
+}
