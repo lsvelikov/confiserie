@@ -362,6 +362,9 @@ body > div.container-fluid > div > div > div > div > ul > li:nth-child(1) {
 .error p a {
     text-decoration: none;
 }
+.error p a {
+    color: #c69500;
+}
 
 .error p a:hover {
     color: #7abaff;
